@@ -10,11 +10,11 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Atelier&Co | Premium Ecommerce Starter',
-    template: '%s | Atelier&Co'
+    default: 'Portal Verde | Jardinería y vida verde',
+    template: '%s | Portal Verde'
   },
   description:
-    'A premium ecommerce starter built with Next.js App Router, TypeScript, and Tailwind CSS.',
+    'Portal Verde: ecommerce paraguayo de plantas, macetas, herramientas y productos para jardín.',
   metadataBase: new URL('https://example.com')
 };
 
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es-PY">
       <body className={inter.className}>
         <Header />
         <main>{children}</main>

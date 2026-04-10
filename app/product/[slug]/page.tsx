@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import { AddToCartButton } from '@/components/add-to-cart-button';
-import { formatPrice, products } from '@/lib/data';
+import { formatPricePYG, products } from '@/lib/data';
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const product = products.find((item) => item.slug === slug);
 
   if (!product) {
-    return { title: 'Product Not Found' };
+    return { title: 'Producto no encontrado' };
   }
 
   return {
@@ -33,23 +33,25 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <section className="section-space">
-      <div className="container-shell grid gap-10 lg:grid-cols-2">
-        <div className="overflow-hidden rounded-3xl border border-black/5 bg-white p-4">
+      <div className="container-shell grid gap-8 lg:grid-cols-2">
+        <div className="overflow-hidden rounded-xl border border-border bg-white p-4">
           <Image
             src={product.image}
             alt={product.name}
             width={960}
             height={700}
-            className="h-full w-full rounded-2xl bg-pearl object-cover"
+            className="h-full w-full rounded-lg bg-soft-green object-cover"
             priority
           />
         </div>
-        <div className="lg:pt-10">
-          <p className="text-xs uppercase tracking-[0.2em] text-muted">{product.category}</p>
-          <h1 className="mt-3 text-4xl font-semibold">{product.name}</h1>
-          <p className="mt-4 text-base text-muted">{product.description}</p>
-          <p className="mt-6 text-2xl font-semibold">{formatPrice(product.price)}</p>
-          <div className="mt-8">
+        <div className="lg:pt-8">
+          <p className="text-sm text-text-soft">{product.category}</p>
+          <h1 className="mt-2 text-3xl font-bold">{product.name}</h1>
+          <p className="mt-3 text-text-soft">{product.description}</p>
+          <p className="mt-5 text-2xl font-bold text-dark-green">
+            {formatPricePYG(product.price)}
+          </p>
+          <div className="mt-6">
             <AddToCartButton />
           </div>
         </div>

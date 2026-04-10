@@ -9,9 +9,9 @@ export function AddToCartButton() {
     <button
       type="button"
       onClick={() => setAdded(true)}
-      className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+      className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:bg-dark-green"
     >
-      {added ? 'Added to cart' : 'Add to cart'}
+      {added ? 'Agregado al carrito' : 'Agregar al carrito'}
     </button>
   );
 }

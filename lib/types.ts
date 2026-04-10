@@ -2,8 +2,8 @@ export type Category = {
   id: string;
   name: string;
   slug: string;
-  description: string;
-  image: string;
+  description?: string;
+  image?: string;
 };
 
 export type Product = {
@@ -14,6 +14,9 @@ export type Product = {
   price: number;
   category: string;
   image: string;
-  featured?: boolean;
-  tags?: string[];
+  isNew?: boolean;
+  isBestSeller?: boolean;
+  isOffer?: boolean;
+  isRecommended?: boolean;
+  previousPrice?: number;
 };

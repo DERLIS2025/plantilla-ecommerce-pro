@@ -1,41 +1,85 @@
 import Link from 'next/link';
 
-import { CartIcon, SearchIcon } from '@/components/icons';
+import { CartIcon, SearchIcon, UserIcon, WhatsAppIcon } from '@/components/icons';
 import { Logo } from '@/components/logo';
-
-const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/shop', label: 'Shop' },
-  { href: '/cart', label: 'Cart' }
-];
+import { categories } from '@/lib/data';
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-black/5 bg-stone/95 backdrop-blur">
-      <div className="container-shell flex h-16 items-center justify-between gap-4">
-        <Logo />
-        <nav className="hidden gap-6 text-sm font-medium md:flex">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="text-muted hover:text-ink">
-              {item.label}
+    <header className="border-b border-border bg-white">
+      
+      {/* Barra superior */}
+      <div className="border-b border-border bg-soft-green">
+        <div className="container-shell flex h-10 items-center justify-between text-xs text-text-soft">
+          <p>Envíos a todo Paraguay · Atención de lunes a sábado</p>
+          <a
+            href="https://wa.me/595000000000"
+            className="inline-flex items-center gap-1 font-semibold text-dark-green"
+          >
+            <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+          </a>
+        </div>
+      </div>
+
+      {/* Header principal */}
+      <div className="container-shell py-4">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
+          
+          {/* Logo */}
+          <Logo />
+
+          {/* Buscador */}
+          <div className="flex flex-1 items-stretch overflow-hidden rounded-xl border border-border bg-white">
+            <select
+              aria-label="Seleccionar categoría"
+              className="w-44 border-r border-border bg-soft-green px-3 text-sm text-text-soft outline-none"
+              defaultValue="Todas"
+            >
+              <option>Todas</option>
+              {categories.map((category) => (
+                <option key={category.id}>{category.name}</option>
+              ))}
+            </select>
+
+            <input
+              type="search"
+              placeholder="Buscar plantas, macetas, sustratos y más"
+              className="h-11 flex-1 px-4 text-sm outline-none"
+            />
+
+            <button
+              type="button"
+              className="inline-flex h-11 w-12 items-center justify-center bg-primary text-white"
+              aria-label="Buscar"
+            >
+              <SearchIcon className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Acciones */}
+          <div className="flex items-center gap-2">
+            <Link
+              href="/shop"
+              className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-text-soft hover:text-text-strong"
+            >
+              Catálogo
             </Link>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            aria-label="Search products"
-            className="rounded-full border border-black/10 p-2 text-muted hover:text-ink"
-          >
-            <SearchIcon className="h-5 w-5" />
-          </button>
-          <Link
-            href="/cart"
-            aria-label="View cart"
-            className="rounded-full border border-black/10 p-2 text-muted hover:text-ink"
-          >
-            <CartIcon className="h-5 w-5" />
-          </Link>
+
+            <Link
+              href="#"
+              className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm font-medium text-text-soft"
+            >
+              <UserIcon className="h-4 w-4" /> Mi cuenta
+            </Link>
+
+            <Link
+              href="/cart"
+              className="inline-flex items-center gap-2 rounded-lg bg-dark-green px-3 py-2 text-sm font-semibold text-white"
+            >
+              <CartIcon className="h-4 w-4" /> Carrito
+            </Link>
+          </div>
+
         </div>
       </div>
     </header>

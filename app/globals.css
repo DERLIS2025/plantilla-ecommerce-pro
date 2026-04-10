@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply bg-stone text-ink antialiased;
+  @apply bg-page-bg text-text-strong antialiased;
 }
 
 a {
@@ -15,9 +15,13 @@ a {
 }
 
 .container-shell {
-  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  @apply mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8;
 }
 
 .section-space {
-  @apply py-12 sm:py-16 lg:py-20;
+  @apply py-10 sm:py-12 lg:py-14;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-full border border-border bg-soft-green px-2.5 py-1 text-xs font-semibold text-dark-green;
 }

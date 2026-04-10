@@ -1,32 +1,35 @@
-# Atelier&Co Ecommerce Starter (Next.js)
+# Portal Verde Ecommerce Starter (Next.js)
 
-A premium ecommerce starter built with **Next.js App Router**, **TypeScript**, **Tailwind CSS**, and **ESLint**, structured for production and ready to deploy on **Vercel**.
+Starter profesional de ecommerce para **Portal Verde**, construido con **Next.js App Router**, **TypeScript**, **Tailwind CSS** y **ESLint**, listo para producción y despliegue en **Vercel**.
 
-## Tech Stack
+## Stack técnico
 
 - Next.js (App Router)
 - TypeScript
 - Tailwind CSS
 - ESLint
 
-## Features Included
+## Qué incluye
 
-- Home page with:
-  - Hero section
-  - Featured categories
-  - Featured products
-  - Promo banner
-  - Benefits/trust section
-  - Newsletter section
-- Shop/Catalog page
-- Product detail page (`/product/[slug]`)
-- Cart page with local visual state
-- Reusable layout and UI components (header, footer, cards)
-- Local mock data (no external backend)
-- Basic SEO metadata setup
-- Optimized images with `next/image`
+- Header comercial realista con:
+  - barra superior informativa
+  - buscador principal con selector de categoría
+  - acceso a cuenta, carrito y WhatsApp
+- Home tipo tienda por categorías:
+  - sidebar de categorías
+  - banner promocional principal
+  - franjas promocionales
+  - secciones de productos: **Nuevos productos**, **Más vendidos**, **Ofertas**, **Recomendados**
+- Página de catálogo (`/shop`)
+- Página de detalle de producto (`/product/[slug]`)
+- Carrito visual con estado local (`/cart`)
+- Mock data local con precios en guaraníes
+- Layout responsive para mobile y desktop
+- Estructura lista para despliegue en Vercel
+- SEO básico
+- Imágenes optimizadas con `next/image`
 
-## Project Structure
+## Estructura principal
 
 ```bash
 app/
@@ -40,67 +43,18 @@ app/
 components/
   add-to-cart-button.tsx
   cart-client.tsx
-  category-card.tsx
+  category-sidebar.tsx
   footer.tsx
   header.tsx
   icons.tsx
   logo.tsx
   product-card.tsx
 sections/
-  benefits.tsx
-  featured-categories.tsx
-  featured-products.tsx
-  hero.tsx
-  newsletter.tsx
-  promo-banner.tsx
+  home-hero.tsx
+  promo-strip.tsx
+  product-section.tsx
 lib/
   data.ts
   types.ts
 public/images/
   *.svg
-```
-
-## Getting Started
-
-### 1) Install dependencies
-
-```bash
-npm install
-```
-
-### 2) Run development server
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-### 3) Lint and type-check
-
-```bash
-npm run lint
-npm run typecheck
-```
-
-### 4) Production build
-
-```bash
-npm run build
-npm run start
-```
-
-## Deploy to Vercel
-
-1. Push this repository to GitHub/GitLab/Bitbucket.
-2. Import the project in Vercel.
-3. Vercel will detect Next.js automatically.
-4. Click **Deploy**.
-
-No additional configuration is required for first deploy.
-
-## Environment Variables
-
-No environment variables are required currently.
-
-When integrating a backend later, add credentials to `.env.local` and configure them in Vercel Project Settings.
