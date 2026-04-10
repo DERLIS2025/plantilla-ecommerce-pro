@@ -1,6 +1,6 @@
 # Portal Verde Ecommerce Starter (Next.js)
 
-Starter profesional de ecommerce para **Portal Verde**, construido con **Next.js App Router**, **TypeScript**, **Tailwind CSS** y **ESLint**.
+Starter profesional de ecommerce para **Portal Verde**, construido con **Next.js App Router**, **TypeScript**, **Tailwind CSS** y **ESLint**, listo para producción y despliegue en **Vercel**.
 
 ## Stack técnico
 
@@ -26,6 +26,8 @@ Starter profesional de ecommerce para **Portal Verde**, construido con **Next.js
 - Mock data local con precios en guaraníes
 - Layout responsive para mobile y desktop
 - Estructura lista para despliegue en Vercel
+- SEO básico
+- Imágenes optimizadas con `next/image`
 
 ## Estructura principal
 
@@ -56,34 +58,3 @@ lib/
   types.ts
 public/images/
   *.svg
-```
-
-## Instalación y uso
-
-```bash
-npm install
-npm run dev
-```
-
-Abrí [http://localhost:3000](http://localhost:3000).
-
-## Validación
-
-```bash
-npm run lint
-npm run typecheck
-npm run build
-```
-
-## Deploy en Vercel
-
-1. Subí el repositorio a GitHub/GitLab/Bitbucket.
-2. Importá el proyecto en Vercel.
-3. Vercel detecta Next.js automáticamente.
-4. Deploy.
-
-No requiere configuraciones extras para el primer despliegue.
-
-## Variables de entorno
-
-Actualmente no se requieren variables de entorno.

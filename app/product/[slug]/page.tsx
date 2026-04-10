@@ -48,7 +48,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <p className="text-sm text-text-soft">{product.category}</p>
           <h1 className="mt-2 text-3xl font-bold">{product.name}</h1>
           <p className="mt-3 text-text-soft">{product.description}</p>
-          <p className="mt-5 text-2xl font-bold text-dark-green">{formatPricePYG(product.price)}</p>
+          <p className="mt-5 text-2xl font-bold text-dark-green">
+            {formatPricePYG(product.price)}
+          </p>
           <div className="mt-6">
             <AddToCartButton />
           </div>

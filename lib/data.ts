@@ -1,15 +1,13 @@
 import type { Category, Product } from '@/lib/types';
 
 export const categories: Category[] = [
-  { id: 'c1', name: 'Plantas de interior', slug: 'plantas-interior' },
-  { id: 'c2', name: 'Plantas de exterior', slug: 'plantas-exterior' },
-  { id: 'c3', name: 'Macetas', slug: 'macetas' },
-  { id: 'c4', name: 'Sustratos y tierras', slug: 'sustratos-tierras' },
-  { id: 'c5', name: 'Fertilizantes', slug: 'fertilizantes' },
-  { id: 'c6', name: 'Herramientas de jardinería', slug: 'herramientas-jardineria' },
+  { id: 'c1', name: 'Pastos', slug: 'pasto' },
+  { id: 'c2', name: 'Paisajismo', slug: 'paisajismo' },
+  { id: 'c3', name: 'Plantas', slug: 'plantas' },
+  { id: 'c4', name: 'Mantenimiento jardines', slug: 'mantenimiento-jardines' },
+  { id: 'c5', name: 'piscina', slug: 'piscina' },
+  { id: 'c6', name: 'Decoracion jardin', slug: 'decoración-jardin' },
   { id: 'c7', name: 'Accesorios de jardín', slug: 'accesorios-jardin' },
-  { id: 'c8', name: 'Huerta', slug: 'huerta' },
-  { id: 'c9', name: 'Decoración verde', slug: 'decoracion-verde' }
 ];
 
 export const products: Product[] = [

@@ -15,6 +15,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <article className="rounded-xl border border-border bg-card p-3 shadow-card">
       <Link href={`/product/${product.slug}`} className="block">
+        
         <div className="relative overflow-hidden rounded-lg bg-soft-green">
           <Image
             src={product.image}
@@ -30,17 +31,26 @@ export function ProductCard({ product }: { product: Product }) {
           <ProductBadge product={product} />
         </div>
 
-        <h3 className="mt-1 line-clamp-2 text-sm font-semibold sm:text-base">{product.name}</h3>
-        <p className="mt-1 line-clamp-2 text-xs text-text-soft sm:text-sm">{product.description}</p>
+        <h3 className="mt-1 line-clamp-2 text-sm font-semibold sm:text-base">
+          {product.name}
+        </h3>
+
+        <p className="mt-1 line-clamp-2 text-xs text-text-soft sm:text-sm">
+          {product.description}
+        </p>
 
         <div className="mt-3 flex items-center gap-2">
-          <p className="text-base font-bold text-dark-green">{formatPricePYG(product.price)}</p>
-          {product.previousPrice ? (
+          <p className="text-base font-bold text-dark-green">
+            {formatPricePYG(product.price)}
+          </p>
+
+          {product.previousPrice && (
             <p className="text-xs text-text-soft line-through">
               {formatPricePYG(product.previousPrice)}
             </p>
-          ) : null}
+          )}
         </div>
+
       </Link>
     </article>
   );

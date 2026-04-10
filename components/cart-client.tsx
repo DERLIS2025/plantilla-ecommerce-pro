@@ -18,7 +18,9 @@ export function CartClient() {
   const updateQuantity = (id: string, quantity: number) => {
     setItems((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, Number.isNaN(quantity) ? 1 : quantity) } : item
+        item.id === id
+          ? { ...item, quantity: Math.max(1, Number.isNaN(quantity) ? 1 : quantity) }
+          : item
       )
     );
   };
