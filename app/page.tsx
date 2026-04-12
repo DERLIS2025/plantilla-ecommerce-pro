@@ -3,6 +3,7 @@ import { cesped, paisajismo } from '@/lib/data';
 import { HomeHero } from '@/sections/home-hero';
 import { ProductSection } from '@/sections/product-section';
 import { PromoStrip } from '@/sections/promo-strip';
+import { ServicesSection } from '@/sections/services-section';
 
 export default function HomePage() {
   return (
@@ -15,6 +16,9 @@ export default function HomePage() {
       <PromoStrip />
 
       <ProductSection title="Césped" products={cesped} />
+
+      <ServicesSection />
+
       <ProductSection title="Paisajismo" products={paisajismo} />
     </div>
   );

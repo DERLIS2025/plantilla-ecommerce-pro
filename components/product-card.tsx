@@ -4,34 +4,6 @@ import Link from 'next/link';
 import { formatPricePYG } from '@/lib/data';
 import type { Product } from '@/lib/types';
 
-function ProductBadge({ product }: { product: Product }) {
-  if (product.isOffer) {
-    return (
-      <span className="absolute left-2 top-2 rounded-full bg-red-500 px-2 py-1 text-[10px] font-bold text-white">
-        OFERTA
-      </span>
-    );
-  }
-
-  if (product.isNew) {
-    return (
-      <span className="absolute left-2 top-2 rounded-full bg-blue-500 px-2 py-1 text-[10px] font-bold text-white">
-        NUEVO
-      </span>
-    );
-  }
-
-  if (product.isBestSeller) {
-    return (
-      <span className="absolute left-2 top-2 rounded-full bg-yellow-500 px-2 py-1 text-[10px] font-bold text-white">
-        TOP
-      </span>
-    );
-  }
-
-  return null;
-}
-
 export function ProductCard({ product }: { product: Product }) {
   const whatsappNumber = '595981077600';
   const whatsappMessage = `Hola, quiero consultar por ${product.name}. ¿Me podrían dar más información?`;
@@ -43,8 +15,6 @@ export function ProductCard({ product }: { product: Product }) {
     <article className="rounded-xl border border-border bg-card p-2 shadow-card transition hover:-translate-y-1 hover:shadow-lg sm:p-3">
       <Link href={`/product/${product.slug}`} className="block">
         <div className="relative overflow-hidden rounded-lg bg-soft-green">
-          <ProductBadge product={product} />
-
           <Image
             src={product.image}
             alt={product.name}
