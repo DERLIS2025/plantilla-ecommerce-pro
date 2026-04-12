@@ -1,31 +1,55 @@
 import Link from 'next/link';
 
 export function HeroSection() {
+  const whatsappNumber = '595981077600';
+  const message = 'Hola, quiero consultar sobre césped e instalación.';
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
   return (
     <section className="section-space">
       <div className="container-shell">
         <div className="rounded-3xl bg-ink px-6 py-14 text-white sm:px-10 lg:px-14">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/70">Spring Collection 2026</p>
-          <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">
-            Thoughtfully crafted pieces for a calmer, more elegant home.
-          </h1>
-          <p className="mt-6 max-w-xl text-sm text-white/75 sm:text-base">
-            Discover contemporary furniture and decor designed with premium materials,
-            timeless proportions, and effortless harmony.
+          
+          {/* Etiqueta */}
+          <p className="text-xs uppercase tracking-[0.2em] text-white/70">
+            Portal Verde
           </p>
+
+          {/* Título */}
+          <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">
+            Renová tu jardín con césped premium
+          </h1>
+
+          {/* Subtexto */}
+          <p className="mt-4 max-w-xl text-sm text-white/80 sm:text-base">
+            Venta e instalación de césped natural en Asunción y Gran Asunción.
+          </p>
+
+          {/* Beneficios (CLAVE para conversión) */}
+          <p className="mt-3 text-xs text-white/70 sm:text-sm">
+            ✔ Instalación incluida &nbsp; • &nbsp; ✔ Entrega rápida &nbsp; • &nbsp; ✔ Atención por WhatsApp
+          </p>
+
+          {/* Botones */}
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/shop"
+            
+            {/* CTA principal */}
+            <a
+              href={whatsappUrl}
+              target="_blank"
               className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink"
             >
-              Shop now
-            </Link>
+              Solicitar cotización
+            </a>
+
+            {/* CTA secundario */}
             <Link
               href="/shop"
               className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold"
             >
-              Explore collections
+              Ver catálogo
             </Link>
+
           </div>
         </div>
       </div>
