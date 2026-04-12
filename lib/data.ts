@@ -1,4 +1,4 @@
-import type { Category, Product } from '@/lib/types';
+import type { Category, Product } from './types';
 
 export const categories: Category[] = [
   { id: 'c1', name: 'Pastos', slug: 'pastos' },
@@ -113,6 +113,15 @@ export const nuevosProductos = products.filter((product) => product.isNew);
 export const masVendidos = products.filter((product) => product.isBestSeller);
 export const ofertas = products.filter((product) => product.isOffer);
 export const recomendados = products.filter((product) => product.isRecommended);
+
+export const pastos = products.filter((product) => product.category === 'Pastos');
+export const paisajismo = products.filter((product) => product.category === 'Paisajismo');
+export const decoracionJardin = products.filter(
+  (product) => product.category === 'Decoración de jardín'
+);
+export const accesoriosJardin = products.filter(
+  (product) => product.category === 'Accesorios de jardín'
+);
 
 /* compatibilidad temporal con archivos viejos */
 export const featuredProducts = recomendados;
