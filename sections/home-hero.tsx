@@ -6,39 +6,34 @@ export function HomeHero() {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <section className="rounded-xl border border-border bg-gradient-to-r from-dark-green to-primary px-6 py-8 text-white sm:px-8 sm:py-10">
-      <p className="text-xs uppercase tracking-[0.2em] text-white/80">Portal Verde</p>
+    <section className="rounded-xl overflow-hidden">
 
-      <h1 className="mt-3 max-w-2xl text-3xl font-bold leading-tight sm:text-4xl">
-        Renová tus espacios con Portal Verde
-      </h1>
+      <div className="relative">
 
-      <p className="mt-3 max-w-xl text-sm text-white/90 sm:text-base">
-        Venta e instalación de césped natural, paisajismo y soluciones para mejorar tus espacios
-        verdes.
-      </p>
+        {/* Imagen */}
+        <img
+          src="/images/banners/hero-desktop.jpg"
+          alt="Portal Verde"
+          className="w-full h-[260px] sm:h-[320px] lg:h-[420px] object-cover"
+        />
 
-      <p className="mt-3 text-xs text-white/80 sm:text-sm">
-        Instalación incluida • Atención rápida • Cobertura en Asunción y Gran Asunción
-      </p>
+        {/* Overlay opcional suave */}
+        <div className="absolute inset-0 bg-black/10"></div>
 
-      <div className="mt-6 flex flex-wrap gap-3">
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-dark-green"
-        >
-          Solicitar cotización
-        </a>
+        {/* Botón WhatsApp sobre el banner */}
+        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold shadow-lg transition"
+          >
+            Agendar por WhatsApp
+          </a>
+        </div>
 
-        <Link
-          href="/shop"
-          className="rounded-lg border border-white/40 px-5 py-2.5 text-sm font-semibold"
-        >
-          Ver catálogo
-        </Link>
       </div>
+
     </section>
   );
 }
