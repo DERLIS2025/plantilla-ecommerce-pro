@@ -5,17 +5,32 @@ export function Logo() {
   return (
     <Link
       href="/"
-      className="flex shrink-0 items-center"
-      aria-label="Ir al inicio de Portal Verde"
+      className="flex w-full justify-center lg:w-auto lg:justify-start"
+      aria-label="Portal Verde"
     >
-      <Image
-        src="/images/logo.png"
-        alt="Portal Verde"
-        width={180}
-        height={60}
-        priority
-        className="h-9 w-auto object-contain sm:h-10 lg:h-11"
-      />
+      {/* Mobile y tablet */}
+      <div className="w-[190px] sm:w-[195px] lg:hidden">
+        <Image
+          src="/images/logo.png"
+          alt="Portal Verde"
+          width={320}
+          height={100}
+          priority
+          className="h-auto w-full object-contain"
+        />
+      </div>
+
+      {/* Desktop intacto */}
+      <div className="hidden lg:block">
+        <Image
+          src="/images/logo.png"
+          alt="Portal Verde"
+          width={320}
+          height={100}
+          priority
+          className="h-[135px] w-auto object-contain"
+        />
+      </div>
     </Link>
   );
 }
