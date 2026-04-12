@@ -1,10 +1,5 @@
 import { CategorySidebar } from '@/components/category-sidebar';
-import {
-  accesoriosJardin,
-  decoracionJardin,
-  paisajismo,
-  pastos
-} from '@/lib/data';
+import { cesped, paisajismo } from '@/lib/data';
 import { HomeHero } from '@/sections/home-hero';
 import { ProductSection } from '@/sections/product-section';
 import { PromoStrip } from '@/sections/promo-strip';
@@ -19,10 +14,8 @@ export default function HomePage() {
 
       <PromoStrip />
 
-      <ProductSection title="Pastos" products={pastos} />
+      <ProductSection title="Césped" products={cesped} />
       <ProductSection title="Paisajismo" products={paisajismo} />
-      <ProductSection title="Decoración de jardín" products={decoracionJardin} />
-      <ProductSection title="Accesorios de jardín" products={accesoriosJardin} />
     </div>
   );
 }

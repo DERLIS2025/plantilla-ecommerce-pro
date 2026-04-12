@@ -1,13 +1,11 @@
 import type { Category, Product } from './types';
 
 export const categories: Category[] = [
-  { id: 'c1', name: 'Pastos', slug: 'pastos' },
+  { id: 'c1', name: 'Césped', slug: 'cesped' },
   { id: 'c2', name: 'Paisajismo', slug: 'paisajismo' },
   { id: 'c3', name: 'Plantas', slug: 'plantas' },
   { id: 'c4', name: 'Mantenimiento de jardines', slug: 'mantenimiento-jardines' },
-  { id: 'c5', name: 'Piscinas', slug: 'piscinas' },
-  { id: 'c6', name: 'Decoración de jardín', slug: 'decoracion-jardin' },
-  { id: 'c7', name: 'Accesorios de jardín', slug: 'accesorios-jardin' }
+  { id: 'c5', name: 'Piscinas', slug: 'piscinas' }
 ];
 
 export const products: Product[] = [
@@ -18,7 +16,7 @@ export const products: Product[] = [
     description: 'Césped natural de alta calidad para jardines residenciales.',
     price: 31000,
     previousPrice: 35000,
-    category: 'Pastos',
+    category: 'Césped',
     image: '/images/products/cesped-esmeralda.jpg',
     isOffer: true,
     isBestSeller: true,
@@ -32,7 +30,7 @@ export const products: Product[] = [
     description: 'Variedad resistente, ideal para mantener un verde intenso durante todo el año.',
     price: 25000,
     previousPrice: 35000,
-    category: 'Pastos',
+    category: 'Césped',
     image: '/images/products/cesped-siempre-verde.jpg',
     isOffer: true,
     isRecommended: true,
@@ -45,7 +43,7 @@ export const products: Product[] = [
     description: 'Cobertura ornamental ideal para paisajismo y áreas decorativas.',
     price: 30000,
     previousPrice: 57000,
-    category: 'Paisajismo',
+    category: 'Césped',
     image: '/images/products/cesped-mani.jpg',
     isNew: true,
     isRecommended: true,
@@ -58,7 +56,7 @@ export const products: Product[] = [
     description: 'Pasto resistente para exteriores y zonas de uso frecuente.',
     price: 25000,
     previousPrice: 57000,
-    category: 'Pastos',
+    category: 'Césped',
     image: '/images/products/cesped-kavaju.jpg',
     isOffer: true,
     includesInstallation: true
@@ -81,7 +79,7 @@ export const products: Product[] = [
     description: 'Separador flexible para delimitar jardines, bordes y senderos.',
     price: 15000,
     previousPrice: 30000,
-    category: 'Accesorios de jardín',
+    category: 'Paisajismo',
     image: '/images/products/separador.jpg',
     isOffer: true
   },
@@ -103,7 +101,7 @@ export const products: Product[] = [
     description: 'Ideal para decoración de jardines, maceteros y senderos.',
     price: 20000,
     previousPrice: 50000,
-    category: 'Decoración de jardín',
+    category: 'Paisajismo',
     image: '/images/products/granza.jpg',
     isOffer: true
   }
@@ -114,14 +112,8 @@ export const masVendidos = products.filter((product) => product.isBestSeller);
 export const ofertas = products.filter((product) => product.isOffer);
 export const recomendados = products.filter((product) => product.isRecommended);
 
-export const pastos = products.filter((product) => product.category === 'Pastos');
+export const cesped = products.filter((product) => product.category === 'Césped');
 export const paisajismo = products.filter((product) => product.category === 'Paisajismo');
-export const decoracionJardin = products.filter(
-  (product) => product.category === 'Decoración de jardín'
-);
-export const accesoriosJardin = products.filter(
-  (product) => product.category === 'Accesorios de jardín'
-);
 
 /* compatibilidad temporal con archivos viejos */
 export const featuredProducts = recomendados;
