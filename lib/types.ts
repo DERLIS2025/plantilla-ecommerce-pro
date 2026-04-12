@@ -1,3 +1,11 @@
+export type Category = {
+  id: string;
+  name: string;
+  slug: string;
+  description?: string;
+  image?: string;
+};
+
 export type Product = {
   id: string;
   slug: string;
@@ -11,6 +19,5 @@ export type Product = {
   isOffer?: boolean;
   isRecommended?: boolean;
   previousPrice?: number;
-
-  includesInstallation?: boolean; // 👈 AGREGAR ESTO
+  includesInstallation?: boolean;
 };

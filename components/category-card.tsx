@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import type { Category } from '@/lib/types';
+import type { Category } from '../lib/types';
 
 export function CategoryCard({ category }: { category: Category }) {
   return (
