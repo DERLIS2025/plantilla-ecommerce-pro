@@ -68,7 +68,7 @@ export const products: Product[] = [
     previousPrice: 35000,
     category: 'Césped',
     image: '/images/products/cesped-siempre-verde.jpg',
-    isOffer: true,
+    isOffer: false,
     isRecommended: true,
     includesInstallation: true
   },
@@ -130,7 +130,7 @@ export const products: Product[] = [
     previousPrice: 57000,
     category: 'Césped',
     image: '/images/products/cesped-kavaju.jpg',
-    isOffer: true,
+    isOffer: false,
     includesInstallation: true
   },
   {
@@ -189,7 +189,7 @@ export const products: Product[] = [
     previousPrice: 30000,
     category: 'Paisajismo',
     image: '/images/products/separador.jpg',
-    isOffer: true
+    isOffer: false
   },
   {
     id: 'p7',
@@ -247,7 +247,7 @@ export const products: Product[] = [
     previousPrice: 50000,
     category: 'Paisajismo',
     image: '/images/products/granza.jpg',
-    isOffer: true
+    isOffer: false
   }
 ];
 
