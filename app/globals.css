@@ -25,3 +25,45 @@ a {
 .badge {
   @apply inline-flex items-center rounded-full border border-border bg-soft-green px-2.5 py-1 text-xs font-semibold text-dark-green;
 }
+
+/* 🔥 ANIMACIÓN BARRA PROMOCIONAL */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 15s linear infinite;
+}
+
+/* 💎 OPCIONAL PRO (suaviza bordes del movimiento) */
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-container::before,
+.marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  z-index: 2;
+}
+
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, #f5f7f6, transparent);
+}
+
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, #f5f7f6, transparent);
+}
