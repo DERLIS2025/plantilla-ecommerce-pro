@@ -102,7 +102,7 @@ export function HomeHero() {
             rel="noopener noreferrer"
             className="rounded-lg bg-green-600 px-4 py-2 text-xs font-semibold text-white shadow-lg transition hover:bg-green-700 sm:px-5 sm:py-2.5 sm:text-sm"
           >
-            Agendar por WhatsApp
+            Hablar con un Asesor
           </a>
         </div>
 
