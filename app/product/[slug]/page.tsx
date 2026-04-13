@@ -43,9 +43,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <section className="section-space">
       <div className="container-shell">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,620px)_1fr]">
+        <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,620px)_1fr]">
           {/* Imagen */}
-          <div className="overflow-hidden rounded-2xl border border-border bg-white p-4 shadow-sm">
+          <div className="self-start overflow-hidden rounded-2xl border border-border bg-white p-4 shadow-sm">
             <div className="relative mx-auto max-w-[600px] overflow-hidden rounded-xl bg-soft-green">
               {product.isOffer ? (
                 <span className="absolute left-4 top-4 z-10 rounded-full bg-red-500 px-3 py-1 text-xs font-bold text-white shadow">
