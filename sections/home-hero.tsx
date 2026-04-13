@@ -8,6 +8,7 @@ type BannerSlide = {
   desktop: string;
   mobile: string;
   alt: string;
+  whatsappMessage: string;
 };
 
 const banners: BannerSlide[] = [
@@ -15,13 +16,15 @@ const banners: BannerSlide[] = [
     id: 1,
     desktop: '/images/banners/hero-desktop.jpg',
     mobile: '/images/banners/hero-desktop.jpg',
-    alt: 'Banner principal Portal Verde'
+    alt: 'Banner principal Portal Verde',
+    whatsappMessage: 'Hola, quiero agendar mantenimiento para mi jardín.'
   },
   {
     id: 2,
     desktop: '/images/banners/slide-1-desktop.jpg',
     mobile: '/images/banners/slide-1-mobile.jpg',
-    alt: 'Banner promocional Portal Verde'
+    alt: 'Banner promocional Portal Verde',
+    whatsappMessage: 'Hola, quiero consultar sobre césped premium e instalación.'
   }
 
   // Agregá más banners así:
@@ -29,11 +32,13 @@ const banners: BannerSlide[] = [
   //   id: 3,
   //   desktop: '/images/banners/slide-2-desktop.jpg',
   //   mobile: '/images/banners/slide-2-mobile.jpg',
-  //   alt: 'Otro banner Portal Verde'
+  //   alt: 'Otro banner Portal Verde',
+  //   whatsappMessage: 'Hola, quiero solicitar una cotización.'
   // }
 ];
 
 export function HomeHero() {
+  const whatsappNumber = '595981077600';
   const [current, setCurrent] = useState(0);
   const hasCarousel = banners.length > 1;
 
@@ -60,6 +65,9 @@ export function HomeHero() {
   };
 
   const currentBanner = banners[current];
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    currentBanner.whatsappMessage
+  )}`;
 
   return (
     <section className="overflow-hidden rounded-xl border border-border bg-white">
@@ -84,6 +92,18 @@ export function HomeHero() {
             priority
             className="block h-auto w-full object-contain bg-white"
           />
+        </div>
+
+        {/* Botón WhatsApp */}
+        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg bg-green-600 px-4 py-2 text-xs font-semibold text-white shadow-lg transition hover:bg-green-700 sm:px-5 sm:py-2.5 sm:text-sm"
+          >
+            Agendar por WhatsApp
+          </a>
         </div>
 
         {hasCarousel ? (
