@@ -11,26 +11,28 @@ export const metadata: Metadata = {
 type ShopPageProps = {
   searchParams?: Promise<{
     search?: string;
+    category?: string;
   }>;
 };
 
 export default async function ShopPage({ searchParams }: ShopPageProps) {
   const params = (await searchParams) ?? {};
   const search = params.search?.trim().toLowerCase() ?? '';
+  const category = params.category?.trim().toLowerCase() ?? '';
 
-  const filteredProducts = search
-    ? products.filter((product) => {
-        const name = product.name.toLowerCase();
-        const description = product.description.toLowerCase();
-        const category = product.category.toLowerCase();
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = search
+      ? product.name.toLowerCase().includes(search) ||
+        product.description.toLowerCase().includes(search) ||
+        product.category.toLowerCase().includes(search)
+      : true;
 
-        return (
-          name.includes(search) ||
-          description.includes(search) ||
-          category.includes(search)
-        );
-      })
-    : products;
+    const matchesCategory = category
+      ? product.category.toLowerCase() === category
+      : true;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <section className="section-space">
@@ -38,8 +40,10 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
         <h1 className="text-3xl font-bold">Catálogo</h1>
 
         <p className="mt-2 text-sm text-text-soft">
-          {search
-            ? `Resultados para: "${params.search}"`
+          {search || category
+            ? `Resultados${search ? ` para: "${params.search}"` : ''}${
+                category ? ` en ${params.category}` : ''
+              }`
             : 'Descubrí todo para tu jardín y tus espacios verdes.'}
         </p>
 
@@ -55,7 +59,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
               No encontramos productos
             </h2>
             <p className="mt-2 text-sm text-text-soft">
-              Probá con otro término de búsqueda.
+              Probá con otro término o categoría.
             </p>
           </div>
         )}
