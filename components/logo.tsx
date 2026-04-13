@@ -8,8 +8,8 @@ export function Logo() {
       <Image
         src="/images/logo-desktop.png"
         alt="Portal Verde"
-        width={160}
-        height={50}
+        width={190}
+        height={70}
         priority
         className="hidden h-auto w-auto sm:block"
       />
