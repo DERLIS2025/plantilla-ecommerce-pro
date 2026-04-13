@@ -18,8 +18,8 @@ export function Logo() {
       <Image
         src="/images/logo-mobile.png"
         alt="Portal Verde"
-        width={120}
-        height={40}
+        width={190}
+        height={60}
         priority
         className="block h-auto w-auto sm:hidden"
       />
