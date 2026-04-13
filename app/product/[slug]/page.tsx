@@ -43,10 +43,34 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <section className="section-space">
       <div className="container-shell">
-        <div className="grid items-start gap-8 lg:grid-cols-[540px_minmax(0,1fr)]">
+        {/* Navegación / salida clara */}
+        <div className="mb-6 space-y-3">
+          <nav className="flex flex-wrap items-center gap-2 text-sm text-text-soft">
+            <Link href="/" className="hover:text-dark-green">
+              Inicio
+            </Link>
+            <span>/</span>
+            <Link href="/shop" className="hover:text-dark-green">
+              Catálogo
+            </Link>
+            <span>/</span>
+            <span>{product.category}</span>
+            <span>/</span>
+            <span className="text-text-strong">{product.name}</span>
+          </nav>
+
+          <Link
+            href="/shop"
+            className="inline-flex items-center rounded-lg border border-border px-4 py-2 text-sm font-medium text-text-strong transition hover:bg-soft-green"
+          >
+            ← Volver al catálogo
+          </Link>
+        </div>
+
+        <div className="grid items-start gap-8 lg:grid-cols-[520px_minmax(0,1fr)]">
           {/* Imagen */}
-          <div className="h-fit self-start rounded-2xl border border-border bg-white p-4 shadow-sm">
-            <div className="relative overflow-hidden rounded-xl bg-soft-green">
+          <div className="self-start">
+            <div className="relative aspect-[4/4] overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
               {product.isOffer ? (
                 <span className="absolute left-4 top-4 z-10 rounded-full bg-red-500 px-3 py-1 text-xs font-bold text-white shadow">
                   OFERTA
@@ -56,16 +80,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <Image
                 src={product.image}
                 alt={product.name}
-                width={800}
-                height={600}
-                className="h-[300px] w-full rounded-xl object-cover sm:h-[400px] lg:h-[500px]"
+                fill
                 priority
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 520px"
               />
             </div>
           </div>
 
           {/* Información */}
-          <div className="lg:pt-4">
+          <div className="lg:pt-2">
             <p className="text-sm text-text-soft">{product.category}</p>
 
             <div className="mt-2 flex flex-wrap items-center gap-2">
@@ -84,7 +108,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             <div className="mt-6 rounded-2xl border border-border bg-white p-5 shadow-sm">
               <div className="flex flex-wrap items-end gap-3">
-                <p className="text-3xl font-bold text-dark-green">
+                <p className="text-4xl font-extrabold text-green-700">
                   {formatPricePYG(product.price)}
                 </p>
 
@@ -114,7 +138,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-xl bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-green-700"
                 >
-                  Hablar con un Asesor
+                  Solicitar presupuesto ahora
                 </a>
 
                 <Link
