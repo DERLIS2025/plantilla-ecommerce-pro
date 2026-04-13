@@ -63,6 +63,7 @@ export function Header() {
 
   return (
     <header className="border-b border-border bg-white">
+      {/* Barra superior */}
       <div className="border-b border-border bg-soft-green">
         <div className="container-shell flex h-10 items-center justify-between gap-3 text-xs text-text-soft">
           <p className="truncate">
@@ -80,12 +81,16 @@ export function Header() {
         </div>
       </div>
 
+      {/* Header principal */}
       <div className="container-shell py-2 sm:py-4">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
+
+          {/* LOGO */}
           <div className="flex w-full justify-center lg:w-auto lg:justify-start">
             <Logo />
           </div>
 
+          {/* BUSCADOR */}
           <div className="relative w-full flex-1">
             <div className="flex w-full items-stretch overflow-hidden rounded-xl border border-border bg-white">
               <select
@@ -127,6 +132,7 @@ export function Header() {
               </button>
             </div>
 
+            {/* AUTOCOMPLETE */}
             {isFocused && search.trim() && (
               <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 overflow-hidden rounded-xl border border-border bg-white shadow-card">
                 {suggestions.length > 0 ? (
@@ -180,7 +186,9 @@ export function Header() {
             )}
           </div>
 
+          {/* ACCIONES */}
           <div className="flex w-full flex-wrap justify-center gap-2 lg:w-auto lg:justify-end">
+
             <Link
               href="/shop"
               className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-text-soft transition hover:text-text-strong"
@@ -188,9 +196,10 @@ export function Header() {
               Catálogo
             </Link>
 
+            {/* 🔥 BOTÓN PRO DESTACADO */}
             <Link
               href="/trabajos"
-              className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-text-soft transition hover:text-text-strong"
+              className="rounded-lg bg-dark-green px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:scale-105 hover:bg-primary"
             >
               Trabajos
             </Link>
@@ -201,7 +210,9 @@ export function Header() {
             >
               <UserIcon className="h-4 w-4" /> Mi cuenta
             </Link>
+
           </div>
+
         </div>
       </div>
     </header>
