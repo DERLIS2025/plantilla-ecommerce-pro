@@ -6,7 +6,7 @@ import type { Product } from '@/lib/types';
 
 export function ProductCard({ product }: { product: Product }) {
   const whatsappNumber = '595981077600';
-  const whatsappMessage = `Hola, quiero consultar por ${product.name}. ¿Me podrían dar más información?`;
+  const whatsappMessage = `Hola, quiero consultar por ${product.name}. ¿Me podrían dar más información, precio final y disponibilidad?`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     whatsappMessage
   )}`;
@@ -36,7 +36,7 @@ export function ProductCard({ product }: { product: Product }) {
           {product.description}
         </p>
 
-        <div className="mt-2 flex items-center gap-2 sm:mt-3">
+        <div className="mt-2 flex items-end gap-2 sm:mt-3">
           <p className="text-sm font-bold text-dark-green sm:text-base">
             {formatPricePYG(product.price)}
           </p>
@@ -53,13 +53,17 @@ export function ProductCard({ product }: { product: Product }) {
             Incluye instalación
           </span>
         ) : null}
+
+        <p className="mt-2 text-[11px] font-medium text-dark-green sm:text-xs">
+          ✔ Trabajo garantizado
+        </p>
       </Link>
 
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-3 block w-full rounded-md bg-dark-green px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-primary"
+        className="mt-3 block w-full rounded-md bg-dark-green px-3 py-2 text-center text-xs font-semibold text-white shadow-sm transition hover:bg-primary"
       >
         Consultar por WhatsApp
       </a>
