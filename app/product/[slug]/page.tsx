@@ -44,16 +44,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <section className="section-space">
       <div className="container-shell">
         <div className="grid gap-8 lg:grid-cols-2">
-          {/* Imagen */}
+
+          {/* 🔥 Imagen optimizada */}
           <div className="overflow-hidden rounded-xl border border-border bg-white p-4">
-            <Image
-              src={product.image}
-              alt={product.name}
-              width={960}
-              height={700}
-              className="h-full w-full rounded-lg bg-soft-green object-cover"
-              priority
-            />
+            <div className="max-w-[600px] mx-auto lg:mx-0">
+              <Image
+                src={product.image}
+                alt={product.name}
+                width={800}
+                height={600}
+                className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover rounded-lg bg-soft-green"
+                priority
+              />
+            </div>
           </div>
 
           {/* Información */}
@@ -86,16 +89,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </p>
             ) : null}
 
-            {/* Bloque rápido de confianza */}
+            {/* Bloque confianza */}
             <div className="mt-6 rounded-xl border border-border bg-white p-4">
-              <div className="grid gap-2 text-sm text-text-soft sm:grid-cols-1">
+              <div className="grid gap-2 text-sm text-text-soft">
                 <p>✔ Instalación profesional incluida</p>
                 <p>✔ Materiales de alta calidad y larga duración</p>
                 <p>✔ Trabajo garantizado con resultados reales</p>
               </div>
             </div>
 
-            {/* CTA principal */}
+            {/* CTA */}
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={whatsappUrl}
@@ -126,13 +129,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             ) : null}
 
-            {/* Recomendado para */}
+            {/* Recomendado */}
             {product.recommendations?.length ? (
               <div className="mt-8">
                 <h2 className="text-lg font-semibold text-text-strong">Recomendado para</h2>
                 <ul className="mt-3 space-y-2 text-sm text-text-soft">
-                  {product.recommendations.map((recommendation) => (
-                    <li key={recommendation}>• {recommendation}</li>
+                  {product.recommendations.map((rec) => (
+                    <li key={rec}>• {rec}</li>
                   ))}
                 </ul>
               </div>
