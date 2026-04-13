@@ -3,34 +3,26 @@ import Link from 'next/link';
 
 export function Logo() {
   return (
-    <Link
-      href="/"
-      className="flex w-full justify-center lg:w-auto lg:justify-start"
-      aria-label="Portal Verde"
-    >
-      {/* Mobile y tablet */}
-      <div className="w-[190px] sm:w-[195px] lg:hidden">
-        <Image
-          src="/images/logo.png"
-          alt="Portal Verde"
-          width={320}
-          height={100}
-          priority
-          className="h-auto w-full object-contain"
-        />
-      </div>
+    <Link href="/" aria-label="Portal Verde" className="inline-flex items-center">
+      {/* Desktop */}
+      <Image
+        src="/images/logo-desktop.png"
+        alt="Portal Verde"
+        width={160}
+        height={50}
+        priority
+        className="hidden h-auto w-auto sm:block"
+      />
 
-      {/* Desktop intacto */}
-      <div className="hidden lg:block">
-        <Image
-          src="/images/logo.png"
-          alt="Portal Verde"
-          width={320}
-          height={100}
-          priority
-          className="h-[135px] w-auto object-contain"
-        />
-      </div>
+      {/* Mobile */}
+      <Image
+        src="/images/logo-mobile.png"
+        alt="Portal Verde"
+        width={120}
+        height={40}
+        priority
+        className="block h-auto w-auto sm:hidden"
+      />
     </Link>
   );
 }
