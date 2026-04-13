@@ -9,8 +9,8 @@ export function Logo() {
       <Image
         src="/images/logo-desktop.png"
         alt="Portal Verde"
-        width={500}
-        height={150}
+        width={450}
+        height={190}
         priority
         className="hidden lg:block h-14 w-auto object-contain"
       />
@@ -19,8 +19,8 @@ export function Logo() {
       <Image
         src="/images/logo-desktop.png"
         alt="Portal Verde"
-        width={400}
-        height={120}
+        width={450}
+        height={150}
         priority
         className="hidden sm:block lg:hidden h-12 w-auto object-contain"
       />
