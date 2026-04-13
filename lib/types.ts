@@ -11,6 +11,10 @@ export type Product = {
   slug: string;
   name: string;
   description: string;
+  seoDescription?: string;
+  benefits?: string[];
+  recommendations?: string[];
+  relatedProducts?: string[];
   price: number;
   category: string;
   image: string;
