@@ -14,27 +14,18 @@ type BannerSlide = {
 const banners: BannerSlide[] = [
   {
     id: 1,
-    desktop: '/images/banners/hero-desktop.jpg',
-    mobile: '/images/banners/hero-desktop.jpg',
+    desktop: '/images/banners/slide-1-desktop.jpg',
+    mobile: '/images/banners/slide-1-mobile.jpg',
     alt: 'Banner principal Portal Verde',
-    whatsappMessage: 'Hola, quiero agendar mantenimiento para mi jardín.'
+    whatsappMessage: 'Hola, quiero consultar sobre césped premium e instalación.'
   },
   {
     id: 2,
-    desktop: '/images/banners/slide-1-desktop.jpg',
-    mobile: '/images/banners/slide-1-mobile.jpg',
+    desktop: '/images/banners/_slide-2-desktop.png',
+    mobile: '/images/banners/slide-2-mobile.png',
     alt: 'Banner promocional Portal Verde',
-    whatsappMessage: 'Hola, quiero consultar sobre césped premium e instalación.'
+    whatsappMessage: 'Hola, quiero hablar con un asesor sobre Portal Verde.'
   }
-
-  // Agregá más banners así:
-  // {
-  //   id: 3,
-  //   desktop: '/images/banners/slide-2-desktop.jpg',
-  //   mobile: '/images/banners/slide-2-mobile.jpg',
-  //   alt: 'Otro banner Portal Verde',
-  //   whatsappMessage: 'Hola, quiero solicitar una cotización.'
-  // }
 ];
 
 export function HomeHero() {
@@ -94,7 +85,6 @@ export function HomeHero() {
           />
         </div>
 
-        {/* Botón WhatsApp */}
         <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
           <a
             href={whatsappUrl}
