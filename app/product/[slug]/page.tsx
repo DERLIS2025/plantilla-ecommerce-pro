@@ -43,85 +43,93 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <section className="section-space">
       <div className="container-shell">
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,620px)_1fr]">
+          {/* Imagen */}
+          <div className="overflow-hidden rounded-2xl border border-border bg-white p-4 shadow-sm">
+            <div className="relative mx-auto max-w-[600px] overflow-hidden rounded-xl bg-soft-green">
+              {product.isOffer ? (
+                <span className="absolute left-4 top-4 z-10 rounded-full bg-red-500 px-3 py-1 text-xs font-bold text-white shadow">
+                  OFERTA
+                </span>
+              ) : null}
 
-          {/* 🔥 Imagen optimizada */}
-          <div className="overflow-hidden rounded-xl border border-border bg-white p-4">
-            <div className="max-w-[600px] mx-auto lg:mx-0">
               <Image
                 src={product.image}
                 alt={product.name}
                 width={800}
                 height={600}
-                className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover rounded-lg bg-soft-green"
+                className="h-[300px] w-full object-cover sm:h-[400px] lg:h-[500px]"
                 priority
               />
             </div>
           </div>
 
           {/* Información */}
-          <div className="lg:pt-8">
+          <div className="lg:pt-4">
             <p className="text-sm text-text-soft">{product.category}</p>
 
-            <h1 className="mt-2 text-3xl font-bold text-text-strong">
-              {product.name}
-            </h1>
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <h1 className="text-3xl font-bold text-text-strong">{product.name}</h1>
 
-            <p className="mt-3 text-text-soft">
-              {product.seoDescription || product.description}
-            </p>
-
-            <div className="mt-5 flex items-end gap-3">
-              <p className="text-2xl font-bold text-dark-green">
-                {formatPricePYG(product.price)}
-              </p>
-
-              {product.previousPrice ? (
-                <p className="text-sm text-text-soft line-through">
-                  {formatPricePYG(product.previousPrice)}
-                </p>
+              {product.isOffer ? (
+                <span className="rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600">
+                  Precio promocional
+                </span>
               ) : null}
             </div>
 
-            {product.includesInstallation ? (
-              <p className="mt-4 inline-flex rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
-                Incluye instalación
-              </p>
-            ) : null}
+            <p className="mt-4 text-base leading-7 text-text-soft">
+              {product.seoDescription || product.description}
+            </p>
 
-            {/* Bloque confianza */}
-            <div className="mt-6 rounded-xl border border-border bg-white p-4">
-              <div className="grid gap-2 text-sm text-text-soft">
+            <div className="mt-6 rounded-2xl border border-border bg-white p-5 shadow-sm">
+              <div className="flex flex-wrap items-end gap-3">
+                <p className="text-3xl font-bold text-dark-green">
+                  {formatPricePYG(product.price)}
+                </p>
+
+                {product.previousPrice ? (
+                  <p className="pb-1 text-sm text-text-soft line-through">
+                    {formatPricePYG(product.previousPrice)}
+                  </p>
+                ) : null}
+              </div>
+
+              {product.includesInstallation ? (
+                <p className="mt-4 inline-flex rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
+                  Incluye instalación
+                </p>
+              ) : null}
+
+              <div className="mt-5 grid gap-2 text-sm text-text-soft">
                 <p>✔ Instalación profesional incluida</p>
                 <p>✔ Materiales de alta calidad y larga duración</p>
                 <p>✔ Trabajo garantizado con resultados reales</p>
               </div>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-green-700"
+                >
+                  Hablar con un Asesor
+                </a>
+
+                <Link
+                  href="/trabajos"
+                  className="inline-flex items-center justify-center rounded-xl border border-border px-6 py-3 text-sm font-semibold text-text-strong transition hover:bg-soft-green"
+                >
+                  Ver trabajos realizados
+                </Link>
+              </div>
             </div>
 
-            {/* CTA */}
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-lg bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-green-700"
-              >
-                Hablar con un Asesor
-              </a>
-
-              <Link
-                href="/trabajos"
-                className="inline-flex items-center justify-center rounded-lg border border-border px-6 py-3 text-sm font-semibold text-text-strong transition hover:bg-soft-green"
-              >
-                Ver trabajos realizados
-              </Link>
-            </div>
-
-            {/* Beneficios */}
             {product.benefits?.length ? (
-              <div className="mt-8">
+              <div className="mt-8 rounded-2xl border border-border bg-white p-5 shadow-sm">
                 <h2 className="text-lg font-semibold text-text-strong">Beneficios</h2>
-                <ul className="mt-3 space-y-2 text-sm text-text-soft">
+                <ul className="mt-4 space-y-3 text-sm text-text-soft">
                   {product.benefits.map((benefit) => (
                     <li key={benefit}>✔ {benefit}</li>
                   ))}
@@ -129,11 +137,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             ) : null}
 
-            {/* Recomendado */}
             {product.recommendations?.length ? (
-              <div className="mt-8">
+              <div className="mt-6 rounded-2xl border border-border bg-white p-5 shadow-sm">
                 <h2 className="text-lg font-semibold text-text-strong">Recomendado para</h2>
-                <ul className="mt-3 space-y-2 text-sm text-text-soft">
+                <ul className="mt-4 space-y-3 text-sm text-text-soft">
                   {product.recommendations.map((rec) => (
                     <li key={rec}>• {rec}</li>
                   ))}
@@ -143,7 +150,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
 
-        {/* Venta cruzada */}
+        {/* Relacionados */}
         {relatedProducts.length ? (
           <div className="mt-14">
             <div className="mb-5 flex items-center justify-between">
@@ -165,9 +172,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <Link
                     key={relatedProduct.id}
                     href={`/product/${relatedProduct.slug}`}
-                    className="overflow-hidden rounded-xl border border-border bg-white p-3 shadow-card transition hover:-translate-y-1 hover:shadow-lg"
+                    className="overflow-hidden rounded-2xl border border-border bg-white p-3 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                   >
-                    <div className="overflow-hidden rounded-lg bg-soft-green">
+                    <div className="relative overflow-hidden rounded-xl bg-soft-green">
+                      {relatedProduct.isOffer ? (
+                        <span className="absolute left-2 top-2 z-10 rounded-full bg-red-500 px-2 py-1 text-[10px] font-bold text-white">
+                          OFERTA
+                        </span>
+                      ) : null}
+
                       <Image
                         src={relatedProduct.image}
                         alt={relatedProduct.name}
