@@ -21,10 +21,10 @@ const banners: BannerSlide[] = [
   },
   {
     id: 2,
-    desktop: '/images/banners/_slide-2-desktop.png',
+    desktop: '/images/banners/slide-2-desktop.jpg',
     mobile: '/images/banners/slide-2-mobile.png',
-    alt: 'Banner promocional Portal Verde',
-    whatsappMessage: 'Hola, quiero hablar con un asesor sobre Portal Verde.'
+    alt: 'Banner secundario Portal Verde',
+    whatsappMessage: 'Hola, quiero hablar con un asesor sobre mantenimiento y paisajismo.'
   }
 ];
 
