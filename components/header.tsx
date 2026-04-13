@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 import { CartIcon, SearchIcon, UserIcon, WhatsAppIcon } from '@/components/icons';
@@ -5,6 +9,14 @@ import { Logo } from '@/components/logo';
 import { categories } from '@/lib/data';
 
 export function Header() {
+  const [search, setSearch] = useState('');
+  const router = useRouter();
+
+  const handleSearch = () => {
+    if (!search.trim()) return;
+    router.push(`/shop?search=${encodeURIComponent(search)}`);
+  };
+
   return (
     <header className="border-b border-border bg-white">
 
@@ -31,37 +43,47 @@ export function Header() {
 
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
 
-          {/* LOGO (centrado en mobile) */}
+          {/* LOGO */}
           <div className="flex w-full justify-center lg:w-auto lg:justify-start">
             <Logo />
           </div>
 
           {/* BUSCADOR */}
           <div className="flex w-full flex-1 items-stretch overflow-hidden rounded-xl border border-border bg-white">
+
             <select
               aria-label="Seleccionar categoría"
               className="w-20 border-r border-border bg-soft-green px-2 text-sm text-text-soft outline-none sm:w-28 lg:w-36"
               defaultValue="Todas"
             >
-              <option>Todas</option>
+              <option value="">Todas</option>
               {categories.map((category) => (
-                <option key={category.id}>{category.name}</option>
+                <option key={category.id} value={category.name}>
+                  {category.name}
+                </option>
               ))}
             </select>
 
             <input
               type="search"
               placeholder="Buscar plantas, macetas..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') handleSearch();
+              }}
               className="h-11 min-w-0 flex-1 px-3 text-sm outline-none sm:px-4"
             />
 
             <button
               type="button"
+              onClick={handleSearch}
               className="inline-flex h-11 w-12 items-center justify-center bg-primary text-white"
               aria-label="Buscar"
             >
               <SearchIcon className="h-5 w-5" />
             </button>
+
           </div>
 
           {/* ACCIONES */}
