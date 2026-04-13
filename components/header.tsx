@@ -1,12 +1,13 @@
 'use client';
 
+import Image from 'next/image';
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 import { CartIcon, SearchIcon, UserIcon, WhatsAppIcon } from '@/components/icons';
 import { Logo } from '@/components/logo';
-import { categories, products } from '@/lib/data';
+import { categories, products, formatPricePYG } from '@/lib/data';
 
 export function Header() {
   const [search, setSearch] = useState('');
@@ -41,6 +42,7 @@ export function Header() {
 
     if (!query && !category) {
       router.push('/shop');
+      setIsFocused(false);
       return;
     }
 
@@ -63,7 +65,9 @@ export function Header() {
     <header className="border-b border-border bg-white">
       <div className="border-b border-border bg-soft-green">
         <div className="container-shell flex h-10 items-center justify-between gap-3 text-xs text-text-soft">
-          <p className="truncate">Envíos a todo Paraguay · Atención de lunes a sábado</p>
+          <p className="truncate">
+            Envíos a todo Paraguay · Atención de lunes a sábado
+          </p>
 
           <a
             href="https://wa.me/595981077600"
@@ -126,26 +130,43 @@ export function Header() {
             {isFocused && search.trim() && (
               <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 overflow-hidden rounded-xl border border-border bg-white shadow-card">
                 {suggestions.length > 0 ? (
-                  <ul className="max-h-80 overflow-y-auto">
+                  <ul className="max-h-96 overflow-y-auto">
                     {suggestions.map((product) => (
-                      <li key={product.id}>
+                      <li key={product.id} className="border-b border-border last:border-b-0">
                         <button
                           type="button"
                           onClick={() => handleSuggestionClick(product.slug)}
-                          className="flex w-full items-start justify-between gap-3 px-4 py-3 text-left transition hover:bg-soft-green"
+                          className="flex w-full items-center gap-3 px-4 py-3 text-left transition hover:bg-soft-green"
                         >
-                          <div>
-                            <p className="text-sm font-semibold text-text-strong">
+                          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-border bg-white">
+                            <Image
+                              src={product.image}
+                              alt={product.name}
+                              fill
+                              sizes="56px"
+                              className="object-cover"
+                            />
+                          </div>
+
+                          <div className="min-w-0 flex-1">
+                            <p className="line-clamp-1 text-sm font-semibold text-text-strong">
                               {product.name}
                             </p>
-                            <p className="mt-1 text-xs text-text-soft">
+                            <p className="mt-1 line-clamp-1 text-xs text-text-soft">
                               {product.category}
                             </p>
                           </div>
 
-                          <span className="shrink-0 text-sm font-semibold text-dark-green">
-                            {new Intl.NumberFormat('es-PY').format(product.price)}
-                          </span>
+                          <div className="shrink-0 text-right">
+                            <p className="text-sm font-bold text-dark-green">
+                              {formatPricePYG(product.price)}
+                            </p>
+                            {product.previousPrice ? (
+                              <p className="text-[11px] text-text-soft line-through">
+                                {formatPricePYG(product.previousPrice)}
+                              </p>
+                            ) : null}
+                          </div>
                         </button>
                       </li>
                     ))}
