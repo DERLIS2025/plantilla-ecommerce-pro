@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { CartIcon, SearchIcon, UserIcon, WhatsAppIcon } from '@/components/icons';
+import { SearchIcon, UserIcon, WhatsAppIcon } from '@/components/icons';
 import { Logo } from '@/components/logo';
 import { categories, products, formatPricePYG } from '@/lib/data';
 
@@ -189,17 +189,17 @@ export function Header() {
             </Link>
 
             <Link
+              href="/trabajos"
+              className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-text-soft transition hover:text-text-strong"
+            >
+              Trabajos
+            </Link>
+
+            <Link
               href="#"
               className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm font-medium text-text-soft transition hover:text-text-strong"
             >
               <UserIcon className="h-4 w-4" /> Mi cuenta
-            </Link>
-
-            <Link
-              href="/cart"
-              className="inline-flex items-center gap-2 rounded-lg bg-dark-green px-3 py-2 text-sm font-semibold text-white transition hover:bg-primary"
-            >
-              <CartIcon className="h-4 w-4" /> Carrito
             </Link>
           </div>
         </div>
