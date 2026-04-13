@@ -37,13 +37,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
       .filter(Boolean) || [];
 
   const whatsappNumber = '595981077600';
-  const message = `Hola, quiero consultar sobre ${product.name}`;
+  const message = `Hola, quiero consultar sobre ${product.name}. ¿Podrían brindarme más información, precio final y disponibilidad?`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (
     <section className="section-space">
       <div className="container-shell">
         <div className="grid gap-8 lg:grid-cols-2">
+          {/* Imagen */}
           <div className="overflow-hidden rounded-xl border border-border bg-white p-4">
             <Image
               src={product.image}
@@ -55,23 +56,29 @@ export default async function ProductPage({ params }: ProductPageProps) {
             />
           </div>
 
+          {/* Información */}
           <div className="lg:pt-8">
             <p className="text-sm text-text-soft">{product.category}</p>
-            <h1 className="mt-2 text-3xl font-bold">{product.name}</h1>
+
+            <h1 className="mt-2 text-3xl font-bold text-text-strong">
+              {product.name}
+            </h1>
 
             <p className="mt-3 text-text-soft">
               {product.seoDescription || product.description}
             </p>
 
-            <p className="mt-5 text-2xl font-bold text-dark-green">
-              {formatPricePYG(product.price)}
-            </p>
-
-            {product.previousPrice ? (
-              <p className="mt-1 text-sm text-text-soft line-through">
-                {formatPricePYG(product.previousPrice)}
+            <div className="mt-5 flex items-end gap-3">
+              <p className="text-2xl font-bold text-dark-green">
+                {formatPricePYG(product.price)}
               </p>
-            ) : null}
+
+              {product.previousPrice ? (
+                <p className="text-sm text-text-soft line-through">
+                  {formatPricePYG(product.previousPrice)}
+                </p>
+              ) : null}
+            </div>
 
             {product.includesInstallation ? (
               <p className="mt-4 inline-flex rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
@@ -79,17 +86,35 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </p>
             ) : null}
 
-            <div className="mt-6">
+            {/* Bloque rápido de confianza */}
+            <div className="mt-6 rounded-xl border border-border bg-white p-4">
+              <div className="grid gap-2 text-sm text-text-soft sm:grid-cols-1">
+                <p>✔ Instalación profesional incluida</p>
+                <p>✔ Materiales de alta calidad y larga duración</p>
+                <p>✔ Trabajo garantizado con resultados reales</p>
+              </div>
+            </div>
+
+            {/* CTA principal */}
+            <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-lg bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-700"
+                className="inline-flex items-center justify-center rounded-lg bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-green-700"
               >
                 Hablar con un Asesor
               </a>
+
+              <Link
+                href="/trabajos"
+                className="inline-flex items-center justify-center rounded-lg border border-border px-6 py-3 text-sm font-semibold text-text-strong transition hover:bg-soft-green"
+              >
+                Ver trabajos realizados
+              </Link>
             </div>
 
+            {/* Beneficios */}
             {product.benefits?.length ? (
               <div className="mt-8">
                 <h2 className="text-lg font-semibold text-text-strong">Beneficios</h2>
@@ -101,6 +126,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </div>
             ) : null}
 
+            {/* Recomendado para */}
             {product.recommendations?.length ? (
               <div className="mt-8">
                 <h2 className="text-lg font-semibold text-text-strong">Recomendado para</h2>
@@ -114,6 +140,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
 
+        {/* Venta cruzada */}
         {relatedProducts.length ? (
           <div className="mt-14">
             <div className="mb-5 flex items-center justify-between">
@@ -147,10 +174,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
                       />
                     </div>
 
-                    <p className="mt-3 text-xs text-text-soft">{relatedProduct.category}</p>
+                    <p className="mt-3 text-xs text-text-soft">
+                      {relatedProduct.category}
+                    </p>
+
                     <h3 className="mt-1 text-sm font-semibold text-text-strong">
                       {relatedProduct.name}
                     </h3>
+
                     <p className="mt-2 text-sm font-bold text-dark-green">
                       {formatPricePYG(relatedProduct.price)}
                     </p>
