@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { AddToCartButton } from '@/components/add-to-cart-button';
 import { formatPricePYG, products } from '@/lib/data';
 
 type ProductPageProps = {
@@ -36,6 +35,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
     product.relatedProducts
       ?.map((relatedSlug) => products.find((item) => item.slug === relatedSlug))
       .filter(Boolean) || [];
+
+  const whatsappNumber = '595981077600';
+  const message = `Hola, quiero consultar sobre ${product.name}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (
     <section className="section-space">
@@ -77,7 +80,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
             ) : null}
 
             <div className="mt-6">
-              <AddToCartButton />
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-lg bg-green-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-green-700"
+              >
+                Hablar con un Asesor
+              </a>
             </div>
 
             {product.benefits?.length ? (
