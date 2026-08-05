@@ -14,8 +14,10 @@ import {
 import { LawnMowerIcon, WhatsAppIcon } from '@/components/icons';
 import { QuoteCounter } from '@/components/quote-counter';
 import { Logo } from '@/components/logo';
+import { MegaMenu } from '@/components/navigation/mega-menu';
 import { categories, formatPricePYG, products } from '@/lib/data';
 import { cn } from '@/lib/utils';
+import { createWhatsAppUrl } from '@/lib/site-config';
 
 export function Header() {
   const [search, setSearch] = useState('');
@@ -97,7 +99,7 @@ export function Header() {
           </div>
 
           <a
-            href="https://wa.me/595981077600"
+            href={createWhatsAppUrl('Hola, quiero recibir asesoramiento de Portal Verde.')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-brand-800 transition hover:text-brand-600"
@@ -267,12 +269,7 @@ export function Header() {
             aria-label="Navegación principal"
             className="ml-auto hidden shrink-0 items-center gap-2 lg:flex"
           >
-            <Link
-              href="/shop"
-              className="inline-flex h-11 items-center rounded-xl border border-border bg-white px-4 text-sm font-semibold text-text-strong transition hover:border-brand-300 hover:bg-brand-50"
-            >
-              Catálogo
-            </Link>
+            <MegaMenu />
 
             <Link
               href="/trabajos"
@@ -368,13 +365,50 @@ export function Header() {
           aria-label="Navegación móvil"
           className="container-shell grid gap-2 py-4"
         >
-          <Link
-            href="/shop"
-            onClick={closeMobileMenu}
-            className="rounded-xl px-4 py-3 text-sm font-semibold text-text-strong transition hover:bg-brand-50"
-          >
-            Catálogo de productos
-          </Link>
+          <div className="rounded-2xl border border-border bg-brand-50/60 p-2">
+            <Link
+              href="/shop"
+              onClick={closeMobileMenu}
+              className="flex min-h-11 items-center justify-between rounded-xl px-3 text-sm font-semibold text-text-strong transition hover:bg-white"
+            >
+              Todos los productos
+              <span aria-hidden="true">→</span>
+            </Link>
+
+            <div className="mt-1 grid grid-cols-2 gap-1.5">
+              <Link
+                href="/shop?category=Césped"
+                onClick={closeMobileMenu}
+                className="rounded-xl bg-white px-3 py-3 text-xs font-semibold text-brand-800 shadow-sm"
+              >
+                🌱 Césped
+              </Link>
+
+              <Link
+                href="/shop?category=Paisajismo"
+                onClick={closeMobileMenu}
+                className="rounded-xl bg-white px-3 py-3 text-xs font-semibold text-brand-800 shadow-sm"
+              >
+                🌿 Paisajismo
+              </Link>
+
+              <Link
+                href="/shop?category=Plantas"
+                onClick={closeMobileMenu}
+                className="rounded-xl bg-white px-3 py-3 text-xs font-semibold text-brand-800 shadow-sm"
+              >
+                🪴 Plantas
+              </Link>
+
+              <Link
+                href="/shop?category=Mantenimiento de jardines"
+                onClick={closeMobileMenu}
+                className="rounded-xl bg-white px-3 py-3 text-xs font-semibold text-brand-800 shadow-sm"
+              >
+                🛠 Mantenimiento
+              </Link>
+            </div>
+          </div>
 
           <Link
             href="/trabajos"
@@ -385,7 +419,7 @@ export function Header() {
           </Link>
 
           <a
-            href="https://wa.me/595981077600"
+            href={createWhatsAppUrl('Hola, quiero recibir asesoramiento de Portal Verde.')}
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMobileMenu}
