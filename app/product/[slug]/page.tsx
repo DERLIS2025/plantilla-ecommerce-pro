@@ -9,7 +9,6 @@ import {
   ChevronRight,
   Clock3,
   MapPin,
-  MessageCircle,
   PackageCheck,
   ShieldCheck,
   Sparkles
@@ -17,6 +16,7 @@ import {
 
 import { ProductCard } from '@/components/product-card';
 import { formatPricePYG, products } from '@/lib/data';
+import { WhatsAppIcon } from '@/components/icons';
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -239,7 +239,7 @@ export default async function ProductPage({
                   rel="noopener noreferrer"
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#20bd5a]"
                 >
-                  <MessageCircle className="h-5 w-5" />
+                  <WhatsAppIcon className="h-5 w-5" />
                   Solicitar presupuesto
                 </a>
 
@@ -499,7 +499,7 @@ export default async function ProductPage({
             rel="noopener noreferrer"
             className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-sm font-semibold text-white"
           >
-            <MessageCircle className="h-5 w-5" />
+            <WhatsAppIcon className="h-5 w-5" />
             Presupuesto
           </a>
         </div>

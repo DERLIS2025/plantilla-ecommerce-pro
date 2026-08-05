@@ -5,10 +5,11 @@ import {
   ArrowRight,
   CheckCircle2,
   MapPin,
-  MessageCircle,
   ShieldCheck,
   Sparkles
 } from 'lucide-react';
+
+import { WhatsAppIcon } from '@/components/icons';
 
 export const metadata: Metadata = {
   title: 'Trabajos realizados',
@@ -106,7 +107,7 @@ export default function TrabajosPage() {
                 rel="noopener noreferrer"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#20bd5a]"
               >
-                <MessageCircle className="h-5 w-5" />
+                <WhatsAppIcon className="h-5 w-5" />
                 Solicitar un presupuesto
               </a>
 
@@ -237,7 +238,7 @@ export default function TrabajosPage() {
                   rel="noopener noreferrer"
                   className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-brand-700 px-4 text-sm font-semibold text-white transition hover:bg-brand-800"
                 >
-                  <MessageCircle className="h-4 w-4" />
+                  <WhatsAppIcon className="h-4 w-4" />
                   Quiero algo similar
                 </a>
               </div>
@@ -321,7 +322,7 @@ export default function TrabajosPage() {
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#20bd5a]"
           >
-            <MessageCircle className="h-5 w-5" />
+            <WhatsAppIcon className="h-5 w-5" />
             Hablar con un asesor
           </a>
         </div>

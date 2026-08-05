@@ -7,7 +7,6 @@ import {
   Clock3,
   Mail,
   MapPin,
-  MessageCircle,
   Phone,
   Share2,
   ShieldCheck
@@ -16,6 +15,7 @@ import { useState } from 'react';
 
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
+import { WhatsAppIcon } from '@/components/icons';
 
 const whatsappNumber = '595981077600';
 
@@ -62,7 +62,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-sm font-semibold text-white transition hover:bg-[#20bd5a]"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
               Hablar con un asesor
             </a>
 
@@ -112,7 +112,7 @@ export function Footer() {
               aria-label="WhatsApp"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366]"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
@@ -307,7 +307,7 @@ export function Footer() {
               aria-label="WhatsApp"
               className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366]"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
             </a>
           </div>
         </div>

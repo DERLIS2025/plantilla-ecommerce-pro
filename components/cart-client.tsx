@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   ClipboardList,
   MapPin,
-  MessageCircle,
   Minus,
   Plus,
   Ruler,
@@ -21,6 +20,8 @@ import {
   saveQuoteItems,
   type QuoteItem
 } from '@/lib/quote-storage';
+
+import { WhatsAppIcon } from '@/components/icons';
 
 export function CartClient() {
   const [items, setItems] = useState<QuoteItem[]>([]);
@@ -363,7 +364,7 @@ export function CartClient() {
           rel="noopener noreferrer"
           className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#20bd5a]"
         >
-          <MessageCircle className="h-5 w-5" />
+          <WhatsAppIcon className="h-5 w-5" />
           Enviar presupuesto por WhatsApp
         </a>
 

@@ -3,10 +3,11 @@ import Link from 'next/link';
 import {
   ArrowRight,
   CheckCircle2,
-  MessageCircle,
   ShieldCheck,
   Star
 } from 'lucide-react';
+
+import { WhatsAppIcon } from '@/components/icons';
 
 const whatsappNumber = '595981077600';
 
@@ -82,7 +83,7 @@ export function HomeHero() {
               rel="noopener noreferrer"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#20bd5a] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
             >
-              <MessageCircle className="h-5 w-5" />
+              <WhatsAppIcon className="h-5 w-5" />
               Solicitar presupuesto
             </a>
 

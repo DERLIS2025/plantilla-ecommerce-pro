@@ -5,12 +5,12 @@ import Link from 'next/link';
 import {
   CheckCircle2,
   Heart,
-  MessageCircle,
   PackageCheck
 } from 'lucide-react';
 
 import { formatPricePYG } from '@/lib/data';
 import type { Product } from '@/lib/types';
+import { WhatsAppIcon } from '@/components/icons';
 
 export function ProductCard({ product }: { product: Product }) {
   const whatsappNumber = '595981077600';
@@ -118,7 +118,7 @@ export function ProductCard({ product }: { product: Product }) {
               rel="noopener noreferrer"
               className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-xl border border-brand-200 bg-white px-2 text-center text-[11px] font-semibold text-brand-800 transition hover:bg-brand-50 active:scale-[0.98] sm:min-h-11 sm:gap-2 sm:px-4 sm:text-sm"
             >
-              <MessageCircle className="h-4 w-4 shrink-0" />
+              <WhatsAppIcon className="h-4 w-4 shrink-0" />
               Consultar ahora
             </a>
           </div>
