@@ -7,7 +7,6 @@ import {
   Check,
   CheckCircle2,
   ChevronRight,
-  CircleDollarSign,
   Clock3,
   MapPin,
   MessageCircle,
