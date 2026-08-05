@@ -37,7 +37,7 @@ const projects = [
     title: 'Renovación de jardín familiar',
     category: 'Paisajismo',
     location: 'Gran Asunción',
-    image: '/images/banners/slide-2-desktop.jpg',
+    image: '/images/banners/slide-2-desktop.webp',
     description:
       'Mejora integral del espacio verde con una propuesta funcional y de fácil mantenimiento.',
     features: [
@@ -51,7 +51,7 @@ const projects = [
     title: 'Área verde para vivienda',
     category: 'Mantenimiento',
     location: 'Luque',
-    image: '/images/banners/slide-1-desktop.jpg',
+    image: '/images/banners/slide-1-desktop.webp',
     description:
       'Recuperación visual y mantenimiento del jardín para conservarlo sano y ordenado.',
     features: [
@@ -76,7 +76,7 @@ export default function TrabajosPage() {
       <section className="container-shell py-4 sm:py-7 lg:py-10">
         <div className="relative isolate overflow-hidden rounded-3xl bg-brand-950 px-5 py-10 text-white sm:px-8 sm:py-14 lg:px-12 lg:py-16">
           <Image
-            src="/images/banners/slide-2-desktop.jpg"
+            src="/images/banners/slide-2-desktop.webp"
             alt="Jardín terminado por Portal Verde"
             fill
             priority

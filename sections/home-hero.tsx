@@ -26,7 +26,7 @@ export function HomeHero() {
     >
       {/* Imagen de fondo */}
       <Image
-        src="/images/banners/slide-2-desktop.jpg"
+        src="/images/banners/slide-2-desktop.webp"
         alt="Servicio profesional de jardinería y mantenimiento de césped"
         fill
         priority

@@ -15,6 +15,7 @@ import { useState } from 'react';
 
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
+import { siteConfig } from '@/lib/site-config';
 import { WhatsAppIcon } from '@/components/icons';
 
 const whatsappNumber = '595981077600';
@@ -90,16 +91,20 @@ export function Footer() {
 
           <div className="mt-4 flex items-center gap-2">
             <a
-              href="#"
-              aria-label="Instagram"
+              href={siteConfig.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram de Portal Verde"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5"
             >
               <AtSign className="h-4 w-4" />
             </a>
 
             <a
-              href="#"
-              aria-label="Facebook"
+              href={siteConfig.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook de Portal Verde"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5"
             >
               <Share2 className="h-4 w-4" />
@@ -285,16 +290,20 @@ export function Footer() {
 
           <div className="mt-5 flex items-center gap-2">
             <a
-              href="#"
-              aria-label="Instagram"
+              href={siteConfig.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram de Portal Verde"
               className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5"
             >
               <AtSign className="h-4 w-4" />
             </a>
 
             <a
-              href="#"
-              aria-label="Facebook"
+              href={siteConfig.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook de Portal Verde"
               className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5"
             >
               <Share2 className="h-4 w-4" />
@@ -386,9 +395,9 @@ export function Footer() {
           </p>
 
           <div className="flex flex-wrap gap-x-4 gap-y-2">
-            <Link href="#">Términos</Link>
-            <Link href="#">Privacidad</Link>
-            <Link href="#">Cookies</Link>
+            <Link href="/terminos">Términos</Link>
+            <Link href="/privacidad">Privacidad</Link>
+            <Link href="/cookies">Cookies</Link>
           </div>
         </div>
       </div>

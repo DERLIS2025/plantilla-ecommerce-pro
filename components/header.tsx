@@ -8,7 +8,6 @@ import {
   ChevronDown,
   Menu,
   Search,
-  User,
   X
 } from 'lucide-react';
 
@@ -283,14 +282,6 @@ export function Header() {
             </Link>
 
             <Link
-              href="#"
-              className="inline-flex h-11 items-center gap-2 rounded-xl border border-border bg-white px-4 text-sm font-semibold text-text-strong transition hover:border-brand-300 hover:bg-brand-50"
-            >
-              <User className="h-4 w-4" />
-              Mi cuenta
-            </Link>
-
-            <Link
               href="/cart"
               aria-label="Ver carrito"
               className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-white text-text-strong transition hover:border-brand-300 hover:bg-brand-50"
@@ -391,15 +382,6 @@ export function Header() {
             className="rounded-xl px-4 py-3 text-sm font-semibold text-text-strong transition hover:bg-brand-50"
           >
             Nuestros trabajos
-          </Link>
-
-          <Link
-            href="#"
-            onClick={closeMobileMenu}
-            className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-text-strong transition hover:bg-brand-50"
-          >
-            <User className="h-4 w-4" />
-            Mi cuenta
           </Link>
 
           <a

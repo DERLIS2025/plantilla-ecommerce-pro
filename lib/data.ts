@@ -35,7 +35,7 @@ export const products: Product[] = [
     price: 31000,
     previousPrice: 35000,
     category: 'Césped',
-    image: '/images/products/cesped-esmeralda.jpg',
+    image: '/images/products/cesped-esmeralda.webp',
     isOffer: true,
     isBestSeller: true,
     isRecommended: true,
@@ -67,7 +67,7 @@ export const products: Product[] = [
     price: 25000,
     previousPrice: 35000,
     category: 'Césped',
-    image: '/images/products/cesped-siempre-verde.jpg',
+    image: '/images/products/cesped-siempre-verde.webp',
     isOffer: false,
     isRecommended: true,
     includesInstallation: true
@@ -98,7 +98,7 @@ export const products: Product[] = [
     price: 30000,
     previousPrice: 57000,
     category: 'Césped',
-    image: '/images/products/cesped-mani.jpg',
+    image: '/images/products/cesped-mani.webp',
     isNew: true,
     isRecommended: true,
     includesInstallation: true
@@ -129,7 +129,7 @@ export const products: Product[] = [
     price: 25000,
     previousPrice: 57000,
     category: 'Césped',
-    image: '/images/products/cesped-kavaju.jpg',
+    image: '/images/products/cesped-kavaju.webp',
     isOffer: false,
     includesInstallation: true
   },
@@ -159,7 +159,7 @@ export const products: Product[] = [
     price: 155000,
     previousPrice: 220000,
     category: 'Paisajismo',
-    image: '/images/products/piso-ecologico.jpg',
+    image: '/images/products/piso-ecologico.webp',
     isBestSeller: true
   },
   {
@@ -188,7 +188,7 @@ export const products: Product[] = [
     price: 15000,
     previousPrice: 30000,
     category: 'Paisajismo',
-    image: '/images/products/separador.jpg',
+    image: '/images/products/separador.webp',
     isOffer: false
   },
   {
@@ -217,7 +217,7 @@ export const products: Product[] = [
     price: 95000,
     previousPrice: 185000,
     category: 'Paisajismo',
-    image: '/images/products/piso-madera.jpg',
+    image: '/images/products/piso-madera.webp',
     isBestSeller: true
   },
   {
@@ -246,7 +246,7 @@ export const products: Product[] = [
     price: 20000,
     previousPrice: 50000,
     category: 'Paisajismo',
-    image: '/images/products/granza.jpg',
+    image: '/images/products/granza.webp',
     isOffer: false
   }
 ];

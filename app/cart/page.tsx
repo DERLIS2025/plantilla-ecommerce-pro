@@ -5,7 +5,11 @@ import { CartClient } from '@/components/cart-client';
 export const metadata: Metadata = {
   title: 'Mi presupuesto',
   description:
-    'Prepará y enviá tu presupuesto personalizado a Portal Verde.'
+    'Prepará y enviá tu presupuesto personalizado a Portal Verde.',
+  robots: {
+    index: false,
+    follow: false
+  }
 };
 
 export default function CartPage() {

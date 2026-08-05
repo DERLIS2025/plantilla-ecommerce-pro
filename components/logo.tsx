@@ -11,7 +11,6 @@ export function Logo() {
         alt="Portal Verde"
         width={450}
         height={190}
-        priority
         className="hidden lg:block h-14 w-auto object-contain"
       />
 
@@ -21,7 +20,6 @@ export function Logo() {
         alt="Portal Verde"
         width={450}
         height={150}
-        priority
         className="hidden sm:block lg:hidden h-12 w-auto object-contain"
       />
 
@@ -31,7 +29,6 @@ export function Logo() {
         alt="Portal Verde"
         width={300}
         height={100}
-        priority
         className="block sm:hidden h-10 w-auto object-contain"
       />
 
