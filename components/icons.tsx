@@ -35,3 +35,24 @@ export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+export function LawnMowerIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M14.5 6.5 18 3" />
+      <path d="M17.5 3H21" />
+      <path d="M7 10h7.5l2 5H6.2L7 10Z" />
+      <path d="M5 15h13" />
+      <circle cx="7" cy="18" r="2" />
+      <circle cx="17" cy="18" r="2" />
+      <path d="M9 10V7.5h3V10" />
+    </svg>
+  );
+}

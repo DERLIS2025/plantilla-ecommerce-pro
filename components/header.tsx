@@ -8,12 +8,11 @@ import {
   ChevronDown,
   Menu,
   Search,
-  ShoppingBag,
   User,
   X
 } from 'lucide-react';
 
-import { WhatsAppIcon } from '@/components/icons';
+import { LawnMowerIcon, WhatsAppIcon } from '@/components/icons';
 import { Logo } from '@/components/logo';
 import { categories, formatPricePYG, products } from '@/lib/data';
 import { cn } from '@/lib/utils';
@@ -295,7 +294,7 @@ export function Header() {
               aria-label="Ver carrito"
               className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-white text-text-strong transition hover:border-brand-300 hover:bg-brand-50"
             >
-              <ShoppingBag className="h-5 w-5" />
+              <LawnMowerIcon className="h-5 w-5" />
 
               <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-700 px-1 text-[10px] font-bold text-white">
                 0
@@ -310,7 +309,7 @@ export function Header() {
               aria-label="Ver carrito"
               className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-white"
             >
-              <ShoppingBag className="h-5 w-5" />
+              <LawnMowerIcon className="h-5 w-5" />
 
               <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-700 px-1 text-[10px] font-bold text-white">
                 0
