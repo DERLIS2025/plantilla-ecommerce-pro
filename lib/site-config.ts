@@ -15,12 +15,9 @@ export const siteConfig = {
   },
 
   social: {
-    /*
-     * Completar cuando tengamos las URLs oficiales.
-     * Mientras estén vacías, no se mostrarán en el sitio.
-     */
-    instagram: '',
-    facebook: ''
+    instagram: 'https://www.instagram.com/portalverde_py/',
+    facebook:
+      'https://www.facebook.com/p/Portal-Verde-61550756372757/'
   }
 } as const;
 
