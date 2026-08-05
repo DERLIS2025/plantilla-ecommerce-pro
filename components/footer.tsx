@@ -395,9 +395,9 @@ export function Footer() {
           </p>
 
           <div className="flex flex-wrap gap-x-4 gap-y-2">
-            <Link href="#">Términos</Link>
-            <Link href="#">Privacidad</Link>
-            <Link href="#">Cookies</Link>
+            <Link href="/terminos">Términos</Link>
+            <Link href="/privacidad">Privacidad</Link>
+            <Link href="/cookies">Cookies</Link>
           </div>
         </div>
       </div>
