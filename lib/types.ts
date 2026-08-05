@@ -24,4 +24,5 @@ export type Product = {
   isRecommended?: boolean;
   previousPrice?: number;
   includesInstallation?: boolean;
+  inStock?: boolean;
 };
