@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 
 import { LawnMowerIcon, WhatsAppIcon } from '@/components/icons';
+import { QuoteCounter } from '@/components/quote-counter';
 import { Logo } from '@/components/logo';
 import { categories, formatPricePYG, products } from '@/lib/data';
 import { cn } from '@/lib/utils';
@@ -296,9 +297,7 @@ export function Header() {
             >
               <LawnMowerIcon className="h-5 w-5" />
 
-              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-700 px-1 text-[10px] font-bold text-white">
-                0
-              </span>
+              <QuoteCounter />
             </Link>
           </nav>
 
@@ -311,9 +310,7 @@ export function Header() {
             >
               <LawnMowerIcon className="h-5 w-5" />
 
-              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-700 px-1 text-[10px] font-bold text-white">
-                0
-              </span>
+              <QuoteCounter />
             </Link>
 
             <button
