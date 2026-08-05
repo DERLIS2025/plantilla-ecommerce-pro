@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply bg-page-bg text-text-strong antialiased;
+  @apply bg-[#f8faf8] text-[#172019] antialiased;
 }
 
 a {
@@ -23,7 +23,7 @@ a {
 }
 
 .badge {
-  @apply inline-flex items-center rounded-full border border-border bg-soft-green px-2.5 py-1 text-xs font-semibold text-dark-green;
+  @apply inline-flex items-center rounded-full border border-[#dfe7e1] bg-brand-100 px-2.5 py-1 text-xs font-semibold text-brand-800;
 }
 
 /* 🔥 ANIMACIÓN BARRA PROMOCIONAL */
@@ -85,3 +85,55 @@ a {
 .animate-tati-bounce {
   animation: tati-bounce 1.8s ease-in-out infinite;
 }
+
+/* PORTAL VERDE DESIGN SYSTEM */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-manrope), Arial, sans-serif;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgb(54 156 85 / 25%);
+  outline-offset: 2px;
+}
+
+::selection {
+  color: white;
+  background: var(--color-brand-700);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
