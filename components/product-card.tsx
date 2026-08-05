@@ -1,4 +1,6 @@
 import Image from 'next/image';
+
+import { AddToCartButton } from '@/components/add-to-cart-button';
 import Link from 'next/link';
 import {
   CheckCircle2,
@@ -107,16 +109,19 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
 
         <div className="mt-auto pt-3">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-xl bg-brand-700 px-2 text-center text-[11px] font-semibold text-white transition hover:bg-brand-800 active:scale-[0.98] sm:min-h-11 sm:gap-2 sm:px-4 sm:text-sm"
-          >
-            <MessageCircle className="h-4 w-4 shrink-0" />
-            <span className="sm:hidden">Consultar</span>
-            <span className="hidden sm:inline">Consultar por WhatsApp</span>
-          </a>
+          <div className="grid gap-2">
+            <AddToCartButton product={product} />
+
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-xl border border-brand-200 bg-white px-2 text-center text-[11px] font-semibold text-brand-800 transition hover:bg-brand-50 active:scale-[0.98] sm:min-h-11 sm:gap-2 sm:px-4 sm:text-sm"
+            >
+              <MessageCircle className="h-4 w-4 shrink-0" />
+              Consultar ahora
+            </a>
+          </div>
         </div>
       </div>
     </article>
