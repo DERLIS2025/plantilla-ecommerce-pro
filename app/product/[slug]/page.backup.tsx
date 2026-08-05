@@ -115,10 +115,10 @@ export default async function ProductPage({
         </Link>
 
         {/* Contenido principal */}
-        <section className="grid items-start gap-4 sm:gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.9fr)] lg:gap-10">
+        <section className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(420px,0.9fr)] lg:gap-10">
           {/* Imagen */}
           <div className="lg:sticky lg:top-32">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-brand-50 shadow-sm sm:aspect-square sm:rounded-3xl">
+            <div className="relative aspect-square overflow-hidden rounded-3xl border border-border bg-brand-50 shadow-sm">
               <Image
                 src={product.image}
                 alt={product.name}
@@ -187,12 +187,12 @@ export default async function ProductPage({
               {product.name}
             </h1>
 
-            <p className="mt-3 line-clamp-3 text-sm leading-6 text-text-soft sm:mt-4 sm:line-clamp-none sm:text-base sm:leading-7">
+            <p className="mt-4 text-sm leading-6 text-text-soft sm:text-base sm:leading-7">
               {product.seoDescription || product.description}
             </p>
 
             {/* Precio y conversión */}
-            <div className="mt-4 rounded-2xl border border-brand-100 bg-white p-4 shadow-soft sm:mt-6 sm:rounded-3xl sm:p-6">
+            <div className="mt-6 rounded-3xl border border-brand-100 bg-white p-5 shadow-soft sm:p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-text-soft">
                 Precio desde
               </p>
@@ -260,140 +260,79 @@ export default async function ProductPage({
 
             {/* Beneficios */}
             {product.benefits?.length ? (
-              <section className="mt-4 sm:mt-6">
-                <details className="group rounded-2xl border border-border bg-white shadow-sm sm:hidden">
-                  <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-4">
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-700">
-                        Por qué elegirlo
-                      </p>
-                      <h2 className="mt-1 text-base font-semibold text-text-strong">
-                        Beneficios principales
-                      </h2>
-                    </div>
+              <section className="mt-5">
+                <div className="mb-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
+                    Por qué elegirlo
+                  </p>
 
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-100 text-brand-700 transition group-open:rotate-45">
-                      +
-                    </span>
-                  </summary>
+                  <h2 className="mt-1 text-xl font-semibold text-text-strong">
+                    Beneficios principales
+                  </h2>
+                </div>
 
-                  <ul className="grid gap-2 border-t border-border px-4 py-4">
-                    {product.benefits.map((benefit) => (
-                      <li
+                <div className="grid grid-cols-2 gap-2.5">
+                  {product.benefits.map((benefit, index) => {
+                    const icons = [
+                      Sparkles,
+                      ShieldCheck,
+                      PackageCheck,
+                      CheckCircle2
+                    ];
+
+                    const Icon = icons[index % icons.length];
+
+                    return (
+                      <div
                         key={benefit}
-                        className="flex items-start gap-2 text-xs leading-5 text-text-soft"
+                        className="rounded-2xl border border-border bg-white p-3.5 shadow-sm sm:p-4"
                       >
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-700" />
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
-                </details>
+                        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-100 text-brand-700">
+                          <Icon className="h-4.5 w-4.5" />
+                        </span>
 
-                <div className="hidden sm:block">
-                  <div className="mb-3">
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
-                      Por qué elegirlo
-                    </p>
-                    <h2 className="mt-1 text-xl font-semibold text-text-strong">
-                      Beneficios principales
-                    </h2>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-2.5">
-                    {product.benefits.map((benefit, index) => {
-                      const icons = [
-                        Sparkles,
-                        ShieldCheck,
-                        PackageCheck,
-                        CheckCircle2
-                      ];
-
-                      const Icon = icons[index % icons.length];
-
-                      return (
-                        <div
-                          key={benefit}
-                          className="rounded-2xl border border-border bg-white p-4 shadow-sm"
-                        >
-                          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-100 text-brand-700">
-                            <Icon className="h-4.5 w-4.5" />
-                          </span>
-
-                          <p className="mt-3 text-sm font-medium leading-5 text-text-strong">
-                            {benefit}
-                          </p>
-                        </div>
-                      );
-                    })}
-                  </div>
+                        <p className="mt-3 text-xs font-medium leading-5 text-text-strong sm:text-sm">
+                          {benefit}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
               </section>
             ) : null}
 
             {/* Recomendaciones */}
             {product.recommendations?.length ? (
-              <section className="mt-3 sm:mt-6">
-                <details className="group rounded-2xl border border-border bg-white shadow-sm sm:hidden">
-                  <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-4">
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-700">
-                        Uso recomendado
-                      </p>
-                      <h2 className="mt-1 text-base font-semibold text-text-strong">
-                        Ideal para
-                      </h2>
-                    </div>
+              <section className="mt-6 rounded-3xl border border-border bg-white p-5 shadow-sm sm:p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
+                  Uso recomendado
+                </p>
 
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-100 text-brand-700 transition group-open:rotate-45">
-                      +
-                    </span>
-                  </summary>
+                <h2 className="mt-1 text-xl font-semibold text-text-strong">
+                  Ideal para
+                </h2>
 
-                  <ul className="grid gap-2 border-t border-border px-4 py-4">
-                    {product.recommendations.map((recommendation) => (
-                      <li
-                        key={recommendation}
-                        className="flex items-start gap-2 text-xs leading-5 text-text-soft"
-                      >
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-700" />
-                        {recommendation}
-                      </li>
-                    ))}
-                  </ul>
-                </details>
+                <ul className="mt-4 grid gap-3">
+                  {product.recommendations.map((recommendation) => (
+                    <li
+                      key={recommendation}
+                      className="flex items-start gap-3 text-sm leading-6 text-text-soft"
+                    >
+                      <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100">
+                        <Check className="h-3 w-3 text-brand-700" />
+                      </span>
 
-                <div className="hidden rounded-3xl border border-border bg-white p-6 shadow-sm sm:block">
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
-                    Uso recomendado
-                  </p>
-
-                  <h2 className="mt-1 text-xl font-semibold text-text-strong">
-                    Ideal para
-                  </h2>
-
-                  <ul className="mt-4 grid gap-3">
-                    {product.recommendations.map((recommendation) => (
-                      <li
-                        key={recommendation}
-                        className="flex items-start gap-3 text-sm leading-6 text-text-soft"
-                      >
-                        <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100">
-                          <Check className="h-3 w-3 text-brand-700" />
-                        </span>
-
-                        {recommendation}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                      {recommendation}
+                    </li>
+                  ))}
+                </ul>
               </section>
             ) : null}
           </div>
         </section>
 
         {/* Proceso */}
-        <section className="mt-6 rounded-2xl bg-brand-950 px-4 py-6 text-white sm:mt-14 sm:rounded-3xl sm:px-8 sm:py-8 lg:px-10">
+        <section className="mt-10 rounded-3xl bg-brand-950 px-5 py-8 text-white sm:mt-14 sm:px-8 lg:px-10">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-200">
               Simple y acompañado
@@ -404,7 +343,7 @@ export default async function ProductPage({
             </h2>
           </div>
 
-          <div className="mt-5 grid auto-cols-[82%] grid-flow-col gap-3 overflow-x-auto pb-2 sm:mt-7 sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
+          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 number: '01',
@@ -467,14 +406,12 @@ export default async function ProductPage({
               </Link>
             </div>
 
-            <div className="flex snap-x gap-3 overflow-x-auto pb-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
               {relatedProducts.map((relatedProduct) => (
-                <div
+                <ProductCard
                   key={relatedProduct.id}
-                  className="w-[72%] shrink-0 snap-start sm:w-auto"
-                >
-                  <ProductCard product={relatedProduct} />
-                </div>
+                  product={relatedProduct}
+                />
               ))}
             </div>
           </section>

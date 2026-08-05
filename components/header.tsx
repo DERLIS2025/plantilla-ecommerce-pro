@@ -4,19 +4,31 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import {
+  ChevronDown,
+  Menu,
+  Search,
+  ShoppingBag,
+  User,
+  X
+} from 'lucide-react';
 
-import { SearchIcon, UserIcon, WhatsAppIcon } from '@/components/icons';
+import { WhatsAppIcon } from '@/components/icons';
 import { Logo } from '@/components/logo';
-import { categories, products, formatPricePYG } from '@/lib/data';
+import { categories, formatPricePYG, products } from '@/lib/data';
+import { cn } from '@/lib/utils';
 
 export function Header() {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const router = useRouter();
 
   const suggestions = useMemo(() => {
     const term = search.trim().toLowerCase();
+
     if (!term) return [];
 
     return products
@@ -46,6 +58,7 @@ export function Header() {
     }
 
     const params = new URLSearchParams();
+
     if (query) params.set('search', query);
     if (category) params.set('category', category);
 
@@ -59,138 +72,351 @@ export function Header() {
     router.push(`/product/${slug}`);
   };
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <header className="border-b border-border bg-white">
+    <header className="sticky top-0 z-50 border-b border-border/80 bg-white/95 shadow-sm backdrop-blur-xl">
+      {/* Barra promocional */}
+      <div className="border-b border-brand-100 bg-brand-50">
+        <div className="container-shell flex h-9 items-center gap-3 overflow-hidden text-xs">
+          <div className="min-w-0 flex-1 overflow-hidden whitespace-nowrap">
+            <div className="animate-marquee inline-flex items-center font-medium text-brand-800">
+              <span>
+                🌱 Césped Esmeralda desde Gs. 31.000 m² con instalación incluida
+              </span>
 
-      {/* 🔥 BARRA SUPERIOR PROMOCIONAL */}
-      <div className="border-b border-border bg-soft-green">
-        <div className="container-shell flex h-10 items-center justify-between gap-3 text-xs">
+              <span className="mx-8 hidden sm:inline">
+                🌿 Césped resistente todo el año
+              </span>
 
-          {/* TEXTO EN MOVIMIENTO */}
-          <div className="overflow-hidden whitespace-nowrap flex-1">
-            <div className="animate-marquee inline-block text-red-600 font-semibold">
-              🌱 Césped Esmeralda desde Gs. 31.000 m² con instalación incluida &nbsp;&nbsp;&nbsp;
-              🌿 Césped Siempre Verde resistente todo el año &nbsp;&nbsp;&nbsp;
-              🏡 Instalación profesional garantizada en Asunción y Gran Asunción &nbsp;&nbsp;&nbsp;
+              <span className="mr-8 hidden lg:inline">
+                🏡 Instalación profesional en Asunción y Gran Asunción
+              </span>
             </div>
           </div>
 
-          {/* WHATSAPP (NO TOCAR) */}
           <a
             href="https://wa.me/595981077600"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-1 font-semibold text-dark-green"
+            className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-brand-800 transition hover:text-brand-600"
           >
-            <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+            <WhatsAppIcon className="h-4 w-4" />
+            <span className="hidden sm:inline">WhatsApp</span>
           </a>
-
         </div>
       </div>
 
-      {/* HEADER PRINCIPAL */}
-      <div className="container-shell py-2 sm:py-4">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
-
-          {/* LOGO */}
-          <div className="flex w-full justify-center lg:w-auto lg:justify-start">
+      {/* Cabecera desktop */}
+      <div className="container-shell">
+        <div className="flex min-h-[72px] items-center gap-4 py-3 lg:min-h-[82px] lg:gap-7">
+          <Link
+            href="/"
+            aria-label="Ir al inicio de Portal Verde"
+            className="shrink-0"
+          >
             <Logo />
-          </div>
+          </Link>
 
-          {/* BUSCADOR */}
-          <div className="relative w-full flex-1">
-            <div className="flex w-full items-stretch overflow-hidden rounded-xl border border-border bg-white">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-20 border-r border-border bg-soft-green px-2 text-sm text-text-soft outline-none sm:w-28 lg:w-36"
-              >
-                <option value="">Todas</option>
-                {categories.map((category) => (
-                  <option key={category.id} value={category.name}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
+          {/* Buscador desktop */}
+          <div className="relative hidden min-w-0 flex-1 md:block">
+            <div
+              className={cn(
+                'flex h-12 items-stretch overflow-hidden rounded-2xl border bg-white transition-all duration-200',
+                isFocused
+                  ? 'border-brand-400 ring-4 ring-brand-100'
+                  : 'border-border hover:border-brand-300'
+              )}
+            >
+              <div className="relative hidden sm:block">
+                <select
+                  value={selectedCategory}
+                  onChange={(event) =>
+                    setSelectedCategory(event.target.value)
+                  }
+                  aria-label="Seleccionar categoría"
+                  className="h-full w-36 cursor-pointer appearance-none border-r border-border bg-brand-50 pl-4 pr-9 text-sm font-medium text-brand-900 outline-none"
+                >
+                  <option value="">Todas</option>
 
-              <input
-                type="search"
-                placeholder="Buscar césped, granza, pisos..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setTimeout(() => setIsFocused(false), 150)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                className="h-11 min-w-0 flex-1 px-3 text-sm outline-none sm:px-4"
-              />
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.name}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+
+                <ChevronDown
+                  aria-hidden="true"
+                  className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-700"
+                />
+              </div>
+
+              <div className="flex min-w-0 flex-1 items-center">
+                <Search
+                  aria-hidden="true"
+                  className="ml-4 h-5 w-5 shrink-0 text-text-soft"
+                />
+
+                <input
+                  type="search"
+                  placeholder="Buscar césped, granza, pisos y servicios..."
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() =>
+                    setTimeout(() => setIsFocused(false), 150)
+                  }
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter') handleSearch();
+                  }}
+                  className="h-full min-w-0 flex-1 bg-transparent px-3 text-sm text-text-strong outline-none placeholder:text-slate-400"
+                />
+              </div>
 
               <button
+                type="button"
                 onClick={handleSearch}
-                className="inline-flex h-11 w-12 items-center justify-center bg-primary text-white"
+                aria-label="Buscar productos"
+                className="inline-flex w-14 shrink-0 items-center justify-center bg-brand-700 text-white transition hover:bg-brand-800 active:scale-95"
               >
-                <SearchIcon className="h-5 w-5" />
+                <Search className="h-5 w-5" />
               </button>
             </div>
 
-            {/* AUTOCOMPLETE */}
+            {/* Resultados predictivos */}
             {isFocused && search.trim() && (
-              <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 overflow-hidden rounded-xl border border-border bg-white shadow-card">
+              <div className="absolute left-0 right-0 top-[calc(100%+10px)] z-50 overflow-hidden rounded-2xl border border-border bg-white shadow-elevated">
                 {suggestions.length > 0 ? (
-                  <ul className="max-h-96 overflow-y-auto">
-                    {suggestions.map((product) => (
-                      <li key={product.id} className="border-b border-border">
-                        <button
-                          onClick={() => handleSuggestionClick(product.slug)}
-                          className="flex w-full items-center gap-3 px-4 py-3 hover:bg-soft-green"
+                  <>
+                    <div className="border-b border-border bg-brand-50 px-4 py-2.5">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-brand-800">
+                        Productos encontrados
+                      </p>
+                    </div>
+
+                    <ul className="max-h-[420px] overflow-y-auto">
+                      {suggestions.map((product) => (
+                        <li
+                          key={product.id}
+                          className="border-b border-border last:border-0"
                         >
-                          <div className="relative h-14 w-14 rounded-lg overflow-hidden border">
-                            <Image src={product.image} alt={product.name} fill className="object-cover" />
-                          </div>
+                          <button
+                            type="button"
+                            onMouseDown={() =>
+                              handleSuggestionClick(product.slug)
+                            }
+                            className="flex w-full items-center gap-3 px-4 py-3 text-left transition hover:bg-brand-50"
+                          >
+                            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-border bg-slate-100">
+                              <Image
+                                src={product.image}
+                                alt={product.name}
+                                fill
+                                sizes="56px"
+                                className="object-cover"
+                              />
+                            </div>
 
-                          <div className="flex-1 text-left">
-                            <p className="text-sm font-semibold">{product.name}</p>
-                            <p className="text-xs text-text-soft">{product.category}</p>
-                          </div>
+                            <div className="min-w-0 flex-1">
+                              <p className="truncate text-sm font-semibold text-text-strong">
+                                {product.name}
+                              </p>
 
-                          <div className="text-right">
-                            <p className="text-sm font-bold text-dark-green">
+                              <p className="mt-0.5 text-xs text-text-soft">
+                                {product.category}
+                              </p>
+                            </div>
+
+                            <p className="shrink-0 text-sm font-bold text-brand-700">
                               {formatPricePYG(product.price)}
                             </p>
-                          </div>
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <button
+                      type="button"
+                      onMouseDown={handleSearch}
+                      className="flex w-full items-center justify-center gap-2 border-t border-border bg-white px-4 py-3 text-sm font-semibold text-brand-700 transition hover:bg-brand-50"
+                    >
+                      Ver todos los resultados
+                    </button>
+                  </>
                 ) : (
-                  <div className="px-4 py-3 text-sm text-text-soft">
-                    No encontramos sugerencias.
+                  <div className="px-5 py-6 text-center">
+                    <Search className="mx-auto h-6 w-6 text-slate-300" />
+
+                    <p className="mt-2 text-sm font-medium text-text-strong">
+                      No encontramos productos
+                    </p>
+
+                    <p className="mt-1 text-xs text-text-soft">
+                      Probá con otro nombre o categoría.
+                    </p>
                   </div>
                 )}
               </div>
             )}
           </div>
 
-          {/* ACCIONES */}
-          <div className="flex w-full flex-wrap justify-center gap-2 lg:w-auto lg:justify-end">
-
-            <Link href="/shop" className="rounded-lg border px-3 py-2 text-sm">
+          {/* Acciones desktop */}
+          <nav
+            aria-label="Navegación principal"
+            className="ml-auto hidden shrink-0 items-center gap-2 lg:flex"
+          >
+            <Link
+              href="/shop"
+              className="inline-flex h-11 items-center rounded-xl border border-border bg-white px-4 text-sm font-semibold text-text-strong transition hover:border-brand-300 hover:bg-brand-50"
+            >
               Catálogo
             </Link>
 
-            {/* BOTÓN DESTACADO */}
             <Link
               href="/trabajos"
-              className="rounded-lg bg-dark-green px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:scale-105 hover:bg-primary"
+              className="inline-flex h-11 items-center rounded-xl bg-brand-700 px-4 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-soft"
             >
               Trabajos
             </Link>
 
-            <Link href="#" className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm">
-              <UserIcon className="h-4 w-4" /> Mi cuenta
+            <Link
+              href="#"
+              className="inline-flex h-11 items-center gap-2 rounded-xl border border-border bg-white px-4 text-sm font-semibold text-text-strong transition hover:border-brand-300 hover:bg-brand-50"
+            >
+              <User className="h-4 w-4" />
+              Mi cuenta
             </Link>
 
+            <Link
+              href="/cart"
+              aria-label="Ver carrito"
+              className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-white text-text-strong transition hover:border-brand-300 hover:bg-brand-50"
+            >
+              <ShoppingBag className="h-5 w-5" />
+
+              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-700 px-1 text-[10px] font-bold text-white">
+                0
+              </span>
+            </Link>
+          </nav>
+
+          {/* Acciones mobile */}
+          <div className="ml-auto flex items-center gap-2 lg:hidden">
+            <Link
+              href="/cart"
+              aria-label="Ver carrito"
+              className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-white"
+            >
+              <ShoppingBag className="h-5 w-5" />
+
+              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-700 px-1 text-[10px] font-bold text-white">
+                0
+              </span>
+            </Link>
+
+            <button
+              type="button"
+              aria-label={
+                isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'
+              }
+              aria-expanded={isMobileMenuOpen}
+              onClick={() =>
+                setIsMobileMenuOpen((current) => !current)
+              }
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-700 text-white"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </button>
           </div>
         </div>
+
+        {/* Buscador mobile */}
+        <div className="pb-3 md:hidden">
+          <div className="flex h-12 items-stretch overflow-hidden rounded-2xl border border-border bg-white shadow-sm focus-within:border-brand-400 focus-within:ring-4 focus-within:ring-brand-100">
+            <Search
+              aria-hidden="true"
+              className="ml-4 h-5 w-5 self-center text-text-soft"
+            />
+
+            <input
+              type="search"
+              placeholder="¿Qué estás buscando?"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') handleSearch();
+              }}
+              className="min-w-0 flex-1 bg-transparent px-3 text-sm outline-none"
+            />
+
+            <button
+              type="button"
+              onClick={handleSearch}
+              aria-label="Buscar"
+              className="inline-flex w-14 items-center justify-center bg-brand-700 text-white"
+            >
+              <Search className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Menú mobile */}
+      <div
+        className={cn(
+          'overflow-hidden border-t border-border bg-white transition-all duration-300 lg:hidden',
+          isMobileMenuOpen
+            ? 'max-h-96 opacity-100'
+            : 'max-h-0 border-t-transparent opacity-0'
+        )}
+      >
+        <nav
+          aria-label="Navegación móvil"
+          className="container-shell grid gap-2 py-4"
+        >
+          <Link
+            href="/shop"
+            onClick={closeMobileMenu}
+            className="rounded-xl px-4 py-3 text-sm font-semibold text-text-strong transition hover:bg-brand-50"
+          >
+            Catálogo de productos
+          </Link>
+
+          <Link
+            href="/trabajos"
+            onClick={closeMobileMenu}
+            className="rounded-xl px-4 py-3 text-sm font-semibold text-text-strong transition hover:bg-brand-50"
+          >
+            Nuestros trabajos
+          </Link>
+
+          <Link
+            href="#"
+            onClick={closeMobileMenu}
+            className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-text-strong transition hover:bg-brand-50"
+          >
+            <User className="h-4 w-4" />
+            Mi cuenta
+          </Link>
+
+          <a
+            href="https://wa.me/595981077600"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={closeMobileMenu}
+            className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-semibold text-white"
+          >
+            <WhatsAppIcon className="h-5 w-5" />
+            Consultar por WhatsApp
+          </a>
+        </nav>
       </div>
     </header>
   );

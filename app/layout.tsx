@@ -1,12 +1,17 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Manrope } from "next/font/google";
 
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 
 import './globals.css';
+import '../styles/design-tokens.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-PY">
-      <body className={inter.className}>
+      <body
+        className={`${manrope.variable} bg-[#f8faf8] font-sans text-[#172019] antialiased`}
+      >
         <Header />
         <main>{children}</main>
         <Footer />

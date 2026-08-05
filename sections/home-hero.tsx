@@ -1,136 +1,118 @@
-'use client';
-
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import {
+  ArrowRight,
+  CheckCircle2,
+  MessageCircle,
+  ShieldCheck,
+  Star
+} from 'lucide-react';
 
-type BannerSlide = {
-  id: number;
-  desktop: string;
-  mobile: string;
-  alt: string;
-  whatsappMessage: string;
-};
+const whatsappNumber = '595981077600';
 
-const banners: BannerSlide[] = [
-  {
-    id: 1,
-    desktop: '/images/banners/slide-1-desktop.jpg',
-    mobile: '/images/banners/slide-1-mobile.jpg',
-    alt: 'Banner principal Portal Verde',
-    whatsappMessage: 'Hola, quiero consultar sobre césped premium e instalación.'
-  },
-  {
-    id: 2,
-    desktop: '/images/banners/slide-2-desktop.jpg',
-    mobile: '/images/banners/slide-2-mobile.png',
-    alt: 'Banner secundario Portal Verde',
-    whatsappMessage: 'Hola, quiero hablar con un asesor sobre mantenimiento y paisajismo.'
-  }
-];
+const whatsappMessage =
+  'Hola, quiero solicitar un presupuesto para césped con instalación.';
+
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+  whatsappMessage
+)}`;
 
 export function HomeHero() {
-  const whatsappNumber = '595981077600';
-  const [current, setCurrent] = useState(0);
-  const hasCarousel = banners.length > 1;
-
-  useEffect(() => {
-    if (!hasCarousel) return;
-
-    const interval = window.setInterval(() => {
-      setCurrent((prev) => (prev + 1) % banners.length);
-    }, 5000);
-
-    return () => window.clearInterval(interval);
-  }, [hasCarousel]);
-
-  const goToSlide = (index: number) => {
-    setCurrent(index);
-  };
-
-  const goPrev = () => {
-    setCurrent((prev) => (prev - 1 + banners.length) % banners.length);
-  };
-
-  const goNext = () => {
-    setCurrent((prev) => (prev + 1) % banners.length);
-  };
-
-  const currentBanner = banners[current];
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    currentBanner.whatsappMessage
-  )}`;
-
   return (
-    <section className="overflow-hidden rounded-xl border border-border bg-white">
-      <div className="relative">
-        <div className="hidden md:block">
-          <Image
-            src={currentBanner.desktop}
-            alt={currentBanner.alt}
-            width={1920}
-            height={700}
-            priority
-            className="block h-auto w-full object-contain bg-white"
-          />
-        </div>
+    <section
+      aria-labelledby="home-hero-title"
+      className="relative isolate overflow-hidden rounded-3xl bg-brand-950 shadow-soft"
+    >
+      {/* Imagen de fondo */}
+      <Image
+        src="/images/banners/slide-2-desktop.jpg"
+        alt="Servicio profesional de jardinería y mantenimiento de césped"
+        fill
+        priority
+        sizes="(max-width: 1024px) 100vw, 900px"
+        className="object-cover object-left"
+      />
 
-        <div className="block md:hidden">
-          <Image
-            src={currentBanner.mobile}
-            alt={currentBanner.alt}
-            width={900}
-            height={700}
-            priority
-            className="block h-auto w-full object-contain bg-white"
-          />
-        </div>
+      {/* Capas para mejorar la lectura */}
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/95 via-brand-950/75 to-brand-950/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent lg:hidden" />
 
-        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-green-600 px-4 py-2 text-xs font-semibold text-white shadow-lg transition hover:bg-green-700 sm:px-5 sm:py-2.5 sm:text-sm"
+      <div className="relative flex min-h-[430px] items-end p-5 sm:min-h-[480px] sm:p-8 lg:min-h-[470px] lg:items-center lg:p-10 xl:p-12">
+        <div className="max-w-xl">
+          {/* Etiqueta */}
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md sm:text-sm">
+            <ShieldCheck className="h-4 w-4 text-brand-200" />
+            Instalación profesional garantizada
+          </div>
+
+          {/* Título */}
+          <h1
+            id="home-hero-title"
+            className="max-w-lg text-3xl font-semibold leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-5xl"
           >
-            Hablar con un Asesor
-          </a>
+            Transformamos tu espacio en un jardín que se disfruta
+          </h1>
+
+          {/* Descripción */}
+          <p className="mt-4 max-w-lg text-sm leading-6 text-white/85 sm:text-base sm:leading-7">
+            Venta e instalación de césped natural con asesoramiento profesional
+            en Asunción y Gran Asunción.
+          </p>
+
+          {/* Precio */}
+          <div className="mt-5 flex flex-wrap items-end gap-x-3 gap-y-1">
+            <span className="text-sm font-medium text-white/75">
+              Desde
+            </span>
+
+            <strong className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+              Gs. 31.000 m²
+            </strong>
+
+            <span className="rounded-full bg-brand-300 px-2.5 py-1 text-xs font-semibold text-brand-950">
+              Instalación incluida
+            </span>
+          </div>
+
+          {/* Acciones */}
+          <div className="mt-6 grid gap-2.5 sm:flex sm:flex-wrap">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#20bd5a] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+            >
+              <MessageCircle className="h-5 w-5" />
+              Solicitar presupuesto
+            </a>
+
+            <Link
+              href="/shop"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white hover:text-brand-900"
+            >
+              Ver catálogo
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          {/* Confianza */}
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/15 pt-5 text-xs text-white/80 sm:text-sm">
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle2 className="h-4 w-4 text-brand-300" />
+              Asesoramiento personalizado
+            </span>
+
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle2 className="h-4 w-4 text-brand-300" />
+              Trabajo garantizado
+            </span>
+
+            <span className="inline-flex items-center gap-1.5">
+              <Star className="h-4 w-4 fill-brand-300 text-brand-300" />
+              Atención profesional
+            </span>
+          </div>
         </div>
-
-        {hasCarousel ? (
-          <>
-            <button
-              type="button"
-              onClick={goPrev}
-              aria-label="Banner anterior"
-              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 px-3 py-2 text-sm font-bold text-dark-green shadow transition hover:bg-white"
-            >
-              ‹
-            </button>
-
-            <button
-              type="button"
-              onClick={goNext}
-              aria-label="Siguiente banner"
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/90 px-3 py-2 text-sm font-bold text-dark-green shadow transition hover:bg-white"
-            >
-              ›
-            </button>
-
-            <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 sm:bottom-4">
-              {banners.map((banner, index) => (
-                <button
-                  key={banner.id}
-                  type="button"
-                  onClick={() => goToSlide(index)}
-                  aria-label={`Ir al banner ${index + 1}`}
-                  className={`h-2.5 w-2.5 rounded-full transition ${
-                    index === current ? 'bg-white' : 'bg-white/50'
-                  }`}
-                />
-              ))}
-            </div>
-          </>
-        ) : null}
       </div>
     </section>
   );
