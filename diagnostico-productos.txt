@@ -1,0 +1,2174 @@
+]633;E;printf '\\n===== lib/types.ts =====\\n';ae0b2687-02d2-435c-8567-b5dfd7f12225]633;C
+===== lib/types.ts =====
+export type Category = {
+  id: string;
+  name: string;
+  slug: string;
+  description?: string;
+  image?: string;
+};
+
+export type Product = {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  seoDescription?: string;
+  benefits?: string[];
+  recommendations?: string[];
+  relatedProducts?: string[];
+  price: number;
+  category: string;
+  image: string;
+  isNew?: boolean;
+  isBestSeller?: boolean;
+  isOffer?: boolean;
+  isRecommended?: boolean;
+  previousPrice?: number;
+  includesInstallation?: boolean;
+  inStock?: boolean;
+};
+
+===== lib/data.ts =====
+import type { Category, Product } from './types';
+
+export const categories: Category[] = [
+  { id: 'c1', name: 'Césped', slug: 'cesped' },
+  { id: 'c2', name: 'Paisajismo', slug: 'paisajismo' },
+  { id: 'c3', name: 'Plantas', slug: 'plantas' },
+  { id: 'c4', name: 'Mantenimiento de jardines', slug: 'mantenimiento-jardines' },
+  { id: 'c5', name: 'Piscinas', slug: 'piscinas' }
+];
+
+export const products: Product[] = [
+  {
+    id: 'p1',
+    slug: 'cesped-esmeralda-m2',
+    name: 'Césped Esmeralda m²',
+    description: 'Césped natural de alta calidad para jardines residenciales.',
+    seoDescription:
+      'Césped Esmeralda natural ideal para jardines residenciales, patios y áreas verdes. Destaca por su color intenso, textura uniforme y excelente adaptación al clima de Paraguay. Una opción práctica para lograr un jardín prolijo, natural y de gran presencia visual.',
+    benefits: [
+      'Color verde intenso y uniforme',
+      'Excelente presentación estética',
+      'Ideal para jardines residenciales',
+      'Incluye instalación'
+    ],
+    recommendations: [
+      'Recomendado para patios y jardines familiares',
+      'Ideal para proyectos residenciales de paisajismo',
+      'Se luce mejor con bordes delimitados y granza decorativa'
+    ],
+    relatedProducts: [
+      'granza-blanca-fina-decorativa',
+      'separador-cesped-caminos',
+      'piso-ecologico-40x60'
+    ],
+    price: 31000,
+    previousPrice: 35000,
+    category: 'Césped',
+    image: '/images/products/cesped-esmeralda.webp',
+    isOffer: true,
+    isBestSeller: true,
+    isRecommended: true,
+    includesInstallation: true
+  },
+  {
+    id: 'p2',
+    slug: 'cesped-siempre-verde-m2',
+    name: 'Césped Siempre Verde m²',
+    description: 'Variedad resistente, ideal para mantener un verde intenso durante todo el año.',
+    seoDescription:
+      'Césped Siempre Verde pensado para quienes buscan un jardín fresco, uniforme y resistente. Su gran ventaja es mantener una apariencia verde atractiva durante gran parte del año, siendo una excelente alternativa para espacios exteriores con uso frecuente.',
+    benefits: [
+      'Alta resistencia para exteriores',
+      'Mantiene un verde atractivo',
+      'Buena cobertura visual',
+      'Incluye instalación'
+    ],
+    recommendations: [
+      'Ideal para jardines con uso diario',
+      'Recomendado para viviendas y áreas comunes',
+      'Combina muy bien con senderos y pisos decorativos'
+    ],
+    relatedProducts: [
+      'piso-ecologico-40x60',
+      'separador-cesped-caminos',
+      'granza-blanca-fina-decorativa'
+    ],
+    price: 25000,
+    previousPrice: 35000,
+    category: 'Césped',
+    image: '/images/products/cesped-siempre-verde.webp',
+    isOffer: false,
+    isRecommended: true,
+    includesInstallation: true
+  },
+  {
+    id: 'p3',
+    slug: 'cesped-mani-docena',
+    name: 'Césped Maní por Docena',
+    description: 'Cobertura ornamental ideal para paisajismo y áreas decorativas.',
+    seoDescription:
+      'Césped Maní por docena ideal para proyectos decorativos y paisajismo. Es una cobertura ornamental muy valorada por su apariencia natural, bajo perfil y capacidad para aportar un acabado diferente en jardines, bordes y zonas verdes decorativas.',
+    benefits: [
+      'Cobertura ornamental atractiva',
+      'Ideal para paisajismo decorativo',
+      'Aporta un acabado natural y prolijo',
+      'Incluye instalación'
+    ],
+    recommendations: [
+      'Perfecto para bordes de jardín y espacios decorativos',
+      'Muy recomendado para proyectos de paisajismo',
+      'Se complementa bien con granza y separadores'
+    ],
+    relatedProducts: [
+      'granza-blanca-fina-decorativa',
+      'separador-cesped-caminos',
+      'pisos-cemento-imitacion-madera'
+    ],
+    price: 30000,
+    previousPrice: 57000,
+    category: 'Césped',
+    image: '/images/products/cesped-mani.webp',
+    isNew: true,
+    isRecommended: true,
+    includesInstallation: true
+  },
+  {
+    id: 'p4',
+    slug: 'cesped-kavaju-m2',
+    name: 'Césped Kavaju m²',
+    description: 'Pasto resistente para exteriores y zonas de uso frecuente.',
+    seoDescription:
+      'Césped Kavaju natural recomendado para exteriores con mayor exigencia. Su resistencia y practicidad lo convierten en una excelente opción para jardines amplios, espacios con tránsito frecuente y proyectos donde se busca durabilidad y buena presencia.',
+    benefits: [
+      'Mayor resistencia para uso frecuente',
+      'Ideal para exteriores amplios',
+      'Buena durabilidad visual',
+      'Incluye instalación'
+    ],
+    recommendations: [
+      'Recomendado para jardines con alto tránsito',
+      'Ideal para patios amplios y zonas funcionales',
+      'Se complementa con pisos y delimitadores decorativos'
+    ],
+    relatedProducts: [
+      'piso-ecologico-40x60',
+      'separador-cesped-caminos',
+      'granza-blanca-fina-decorativa'
+    ],
+    price: 25000,
+    previousPrice: 57000,
+    category: 'Césped',
+    image: '/images/products/cesped-kavaju.webp',
+    isOffer: false,
+    includesInstallation: true
+  },
+  {
+    id: 'p5',
+    slug: 'piso-ecologico-40x60',
+    name: 'Piso Ecológico 40x60',
+    description: 'Piso drenante ideal para jardines, senderos y estacionamientos.',
+    seoDescription:
+      'Piso Ecológico 40x60 diseñado para jardines, senderos y espacios exteriores. Su formato permite un acabado funcional y atractivo, ayudando a ordenar visualmente el área y mejorar la circulación en proyectos de paisajismo y decoración exterior.',
+    benefits: [
+      'Ideal para senderos y jardines',
+      'Aporta orden visual al espacio',
+      'Mejora la circulación exterior',
+      'Excelente complemento para césped'
+    ],
+    recommendations: [
+      'Recomendado para caminos y accesos de jardín',
+      'Ideal para combinar con césped natural',
+      'Muy útil en proyectos de paisajismo moderno'
+    ],
+    relatedProducts: [
+      'cesped-esmeralda-m2',
+      'cesped-siempre-verde-m2',
+      'granza-blanca-fina-decorativa'
+    ],
+    price: 155000,
+    previousPrice: 220000,
+    category: 'Paisajismo',
+    image: '/images/products/piso-ecologico.webp',
+    isBestSeller: true
+  },
+  {
+    id: 'p6',
+    slug: 'separador-cesped-caminos',
+    name: 'Separador de Césped y Caminos',
+    description: 'Separador flexible para delimitar jardines, bordes y senderos.',
+    seoDescription:
+      'Separador de césped y caminos ideal para delimitar áreas verdes, senderos y bordes decorativos. Es un producto muy útil para mantener un diseño más prolijo, definido y profesional en jardines residenciales y proyectos de paisajismo.',
+    benefits: [
+      'Delimita espacios con prolijidad',
+      'Mejora el acabado del jardín',
+      'Flexible y funcional',
+      'Ideal para paisajismo'
+    ],
+    recommendations: [
+      'Muy recomendado para bordes de césped',
+      'Ideal para senderos decorativos',
+      'Se complementa con granza y pisos exteriores'
+    ],
+    relatedProducts: [
+      'granza-blanca-fina-decorativa',
+      'piso-ecologico-40x60',
+      'cesped-esmeralda-m2'
+    ],
+    price: 15000,
+    previousPrice: 30000,
+    category: 'Paisajismo',
+    image: '/images/products/separador.webp',
+    isOffer: false
+  },
+  {
+    id: 'p7',
+    slug: 'pisos-cemento-imitacion-madera',
+    name: 'Pisos de Cemento Imitación Madera',
+    description: 'Acabado decorativo moderno para caminos, patios y exteriores.',
+    seoDescription:
+      'Pisos de cemento imitación madera con acabado decorativo moderno para patios, caminos y exteriores. Son ideales para quienes buscan un estilo cálido, elegante y resistente, combinando la estética de la madera con la practicidad del cemento.',
+    benefits: [
+      'Estética cálida y moderna',
+      'Ideal para exteriores',
+      'Aporta diseño al paisajismo',
+      'Muy buen complemento decorativo'
+    ],
+    recommendations: [
+      'Recomendado para patios y caminos principales',
+      'Ideal para combinar con césped y granza',
+      'Excelente para proyectos residenciales modernos'
+    ],
+    relatedProducts: [
+      'cesped-esmeralda-m2',
+      'granza-blanca-fina-decorativa',
+      'separador-cesped-caminos'
+    ],
+    price: 95000,
+    previousPrice: 185000,
+    category: 'Paisajismo',
+    image: '/images/products/piso-madera.webp',
+    isBestSeller: true
+  },
+  {
+    id: 'p8',
+    slug: 'granza-blanca-fina-decorativa',
+    name: 'Granza Blanca Fina Decorativa',
+    description: 'Ideal para decoración de jardines, maceteros y senderos.',
+    seoDescription:
+      'Granza blanca fina decorativa ideal para embellecer jardines, maceteros, senderos y bordes. Aporta contraste, limpieza visual y una terminación prolija en proyectos de paisajismo, siendo uno de los complementos más usados para realzar espacios exteriores.',
+    benefits: [
+      'Aporta contraste y limpieza visual',
+      'Ideal para senderos y bordes',
+      'Muy utilizada en decoración exterior',
+      'Combina con césped y pisos'
+    ],
+    recommendations: [
+      'Ideal para maceteros y senderos decorativos',
+      'Muy recomendada para acompañar césped natural',
+      'Perfecta para resaltar bordes y caminos'
+    ],
+    relatedProducts: [
+      'separador-cesped-caminos',
+      'piso-ecologico-40x60',
+      'cesped-siempre-verde-m2'
+    ],
+    price: 20000,
+    previousPrice: 50000,
+    category: 'Paisajismo',
+    image: '/images/products/granza.webp',
+    isOffer: false
+  }
+];
+
+export const nuevosProductos = products.filter((product) => product.isNew);
+export const masVendidos = products.filter((product) => product.isBestSeller);
+export const ofertas = products.filter((product) => product.isOffer);
+export const recomendados = products.filter((product) => product.isRecommended);
+
+export const cesped = products.filter((product) => product.category === 'Césped');
+export const paisajismo = products.filter((product) => product.category === 'Paisajismo');
+
+/* compatibilidad temporal con archivos viejos */
+export const featuredProducts = recomendados;
+
+export const formatPricePYG = (amount: number) =>
+  `Gs. ${new Intl.NumberFormat('es-PY').format(amount)}`;
+
+===== components/product-card.tsx =====
+import Image from 'next/image';
+
+import { AddToCartButton } from '@/components/add-to-cart-button';
+import Link from 'next/link';
+import {
+  CheckCircle2,
+  Heart,
+  PackageCheck
+} from 'lucide-react';
+
+import { formatPricePYG } from '@/lib/data';
+import type { Product } from '@/lib/types';
+import { WhatsAppIcon } from '@/components/icons';
+
+export function ProductCard({ product }: { product: Product }) {
+  const whatsappNumber = '595981077600';
+
+  const whatsappMessage = `Hola, quiero consultar por ${product.name}. ¿Me podrían dar más información, precio final y disponibilidad?`;
+
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
+
+  const discount =
+    product.previousPrice && product.previousPrice > product.price
+      ? Math.round(
+          ((product.previousPrice - product.price) / product.previousPrice) *
+            100
+        )
+      : null;
+
+  return (
+    <article className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-soft">
+      <Link href={`/product/${product.slug}`} className="block">
+        <div className="relative aspect-[4/3] overflow-hidden bg-brand-50">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="object-cover transition duration-500 group-hover:scale-105"
+          />
+
+          <div className="absolute left-2 top-2 flex max-w-[70%] flex-wrap gap-1.5">
+            {discount ? (
+              <span className="rounded-full bg-red-600 px-2 py-1 text-[10px] font-bold text-white shadow-sm sm:text-xs">
+                -{discount}%
+              </span>
+            ) : null}
+
+            {product.includesInstallation ? (
+              <span className="rounded-full bg-white/95 px-2 py-1 text-[10px] font-semibold text-brand-800 shadow-sm backdrop-blur sm:text-xs">
+                Instalación incluida
+              </span>
+            ) : null}
+          </div>
+
+          <button
+            type="button"
+            aria-label={`Agregar ${product.name} a favoritos`}
+            className="absolute right-2 top-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/95 text-text-soft shadow-sm backdrop-blur transition hover:text-red-500"
+          >
+            <Heart className="h-4 w-4" />
+          </button>
+        </div>
+      </Link>
+
+      <div className="flex flex-1 flex-col p-3 sm:p-4">
+        <div>
+          <p className="text-[10px] font-medium uppercase tracking-wide text-text-soft sm:text-xs">
+            {product.category}
+          </p>
+
+          <Link href={`/product/${product.slug}`}>
+            <h3 className="mt-1 line-clamp-2 min-h-[36px] text-sm font-semibold leading-5 text-text-strong transition group-hover:text-brand-800 sm:min-h-[48px] sm:text-base sm:leading-6">
+              {product.name}
+            </h3>
+          </Link>
+
+          <p className="mt-1.5 hidden line-clamp-2 text-xs leading-5 text-text-soft sm:block sm:text-sm">
+            {product.description}
+          </p>
+        </div>
+
+        <div className="mt-3">
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <p className="text-base font-bold tracking-tight text-brand-700 sm:text-xl">
+              {formatPricePYG(product.price)}
+            </p>
+
+            {product.previousPrice ? (
+              <p className="text-[10px] text-text-soft line-through sm:text-xs">
+                {formatPricePYG(product.previousPrice)}
+              </p>
+            ) : null}
+          </div>
+
+          <div className="mt-2 space-y-1">
+            <p className="flex items-center gap-1.5 text-[10px] font-medium text-brand-800 sm:text-xs">
+              <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+              Trabajo garantizado
+            </p>
+
+            <p className="hidden items-center gap-1.5 text-xs text-text-soft sm:flex">
+              <PackageCheck className="h-3.5 w-3.5 shrink-0" />
+              Consultá disponibilidad
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-auto pt-3">
+          <div className="grid gap-2">
+            <AddToCartButton product={product} />
+
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-xl border border-brand-200 bg-white px-2 text-center text-[11px] font-semibold text-brand-800 transition hover:bg-brand-50 active:scale-[0.98] sm:min-h-11 sm:gap-2 sm:px-4 sm:text-sm"
+            >
+              <WhatsAppIcon className="h-4 w-4 shrink-0" />
+              Consultar ahora
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+===== lib/products/schema.ts =====
+import { z } from 'zod';
+
+export const PRODUCT_UNITS = [
+  'unidad',
+  'm²',
+  'metro lineal',
+  'docena',
+  'servicio',
+  'visita'
+] as const;
+
+const optionalNumber = z.preprocess(
+  (value) => {
+    if (value === '' || value === null || value === undefined) {
+      return undefined;
+    }
+
+    const parsed = Number(value);
+    return Number.isNaN(parsed) ? value : parsed;
+  },
+  z.number().positive().optional()
+);
+
+const productImageUrlSchema = z
+  .string()
+  .trim()
+  .min(1, 'La imagen debe tener una dirección válida.')
+  .refine(
+    (value) =>
+      value.startsWith('/') ||
+      value.startsWith('https://') ||
+      value.startsWith('http://'),
+    'La dirección de la imagen no es válida.'
+  );
+
+export const productImageSchema = z.object({
+  imageUrl: productImageUrlSchema,
+  storagePath: z.string().default(''),
+  altText: z.string().default(''),
+  orderIndex: z.number().int().nonnegative(),
+  isPrimary: z.boolean(),
+  fileSize: z.number().int().positive().max(5 * 1024 * 1024),
+  mimeType: z.enum(['image/jpeg', 'image/png', 'image/webp'])
+});
+
+export const productPriceTierSchema = z
+  .object({
+    minQuantity: z.coerce
+      .number()
+      .positive('La cantidad desde debe ser mayor a cero.'),
+
+    maxQuantity: optionalNumber,
+
+    priceAmount: z.coerce
+      .number()
+      .positive('El precio debe ser mayor a cero.'),
+
+    isPromo: z.boolean().default(false),
+
+    label: z.string().trim().default('')
+  })
+  .refine(
+    (tier) =>
+      tier.maxQuantity === undefined ||
+      tier.maxQuantity >= tier.minQuantity,
+    {
+      message:
+        'La cantidad hasta no puede ser menor que la cantidad desde.',
+      path: ['maxQuantity']
+    }
+  );
+
+export const productFormSchema = z
+  .object({
+    name: z
+      .string()
+      .trim()
+      .min(1, 'El nombre es obligatorio.')
+      .max(160),
+
+    slug: z
+      .string()
+      .trim()
+      .min(1, 'El slug es obligatorio.')
+      .regex(
+        /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+        'El slug solo puede contener letras minúsculas, números y guiones.'
+      ),
+
+    categoryId: z
+      .string()
+      .uuid('Seleccioná una categoría válida.'),
+
+    shortDescription: z
+      .string()
+      .trim()
+      .min(1, 'La descripción corta es obligatoria.')
+      .max(500),
+
+    description: z
+      .string()
+      .trim()
+      .min(1, 'La descripción completa es obligatoria.'),
+
+    unit: z.enum(PRODUCT_UNITS),
+
+    minOrderQuantity: z.coerce
+      .number()
+      .positive('La cantidad mínima debe ser mayor a cero.'),
+
+    priceAmount: z.coerce
+      .number()
+      .positive('El precio debe ser mayor a cero.'),
+
+    currency: z.enum(['PYG', 'USD']),
+
+    promoPrice: optionalNumber,
+
+    promoStartsAt: z.string().default(''),
+    promoEndsAt: z.string().default(''),
+
+    isActive: z.boolean(),
+    isFeatured: z.boolean(),
+
+    priceTiers: z.array(productPriceTierSchema).default([]),
+
+    images: z.array(productImageSchema).max(12).default([]),
+
+    features: z
+      .array(
+        z.object({
+          value: z.string().trim()
+        })
+      )
+      .default([]),
+
+    specifications: z
+      .array(
+        z.object({
+          key: z.string().trim(),
+          value: z.string().trim()
+        })
+      )
+      .default([]),
+
+    recommendations: z
+      .array(
+        z.object({
+          value: z.string().trim()
+        })
+      )
+      .default([]),
+
+    seoTitle: z.string().trim().max(70).default(''),
+
+    seoDescription: z.string().trim().max(180).default(''),
+
+    seoKeywords: z.string().trim().default(''),
+
+    mainImageAlt: z.string().trim().max(180).default(''),
+
+    canonicalUrl: z
+      .union([
+        z.literal(''),
+        z.string().url('La URL canonical no es válida.')
+      ])
+      .default('')
+  })
+  .superRefine((product, context) => {
+    if (
+      product.promoStartsAt &&
+      product.promoEndsAt &&
+      new Date(product.promoEndsAt) <
+        new Date(product.promoStartsAt)
+    ) {
+      context.addIssue({
+        code: 'custom',
+        path: ['promoEndsAt'],
+        message:
+          'La fecha final no puede ser anterior a la fecha inicial.'
+      });
+    }
+
+    product.specifications.forEach((specification, index) => {
+      const hasKey = specification.key.length > 0;
+      const hasValue = specification.value.length > 0;
+
+      if (hasKey !== hasValue) {
+        context.addIssue({
+          code: 'custom',
+          path: [
+            'specifications',
+            index,
+            hasKey ? 'value' : 'key'
+          ],
+          message:
+            'Completá tanto el nombre como el valor de la especificación.'
+        });
+      }
+    });
+
+    const tiers = [...product.priceTiers].sort(
+      (a, b) => a.minQuantity - b.minQuantity
+    );
+
+    for (let index = 0; index < tiers.length - 1; index += 1) {
+      const current = tiers[index];
+      const next = tiers[index + 1];
+
+      if (
+        current.maxQuantity === undefined ||
+        current.maxQuantity >= next.minQuantity
+      ) {
+        context.addIssue({
+          code: 'custom',
+          path: ['priceTiers'],
+          message: 'Las escalas de precio se superponen.'
+        });
+
+        break;
+      }
+    }
+  });
+
+export type ProductFormInput = z.input<typeof productFormSchema>;
+export type ProductFormValues = z.output<typeof productFormSchema>;
+
+export type ProductImageDraft = z.infer<
+  typeof productImageSchema
+>;
+
+===== MIGRACIÓN 002 =====
+begin;
+
+-- ============================================================
+-- 1. AMPLIAR PRODUCTS SIN PERDER LOS 8 PRODUCTOS EXISTENTES
+-- ============================================================
+
+alter table public.products
+  add column if not exists short_description text,
+  add column if not exists full_description text,
+  add column if not exists currency text not null default 'PYG',
+  add column if not exists unit text not null default 'unidad',
+  add column if not exists min_order_quantity numeric(12,2) not null default 1,
+  add column if not exists is_featured boolean not null default false,
+  add column if not exists promo_price numeric(12,2),
+  add column if not exists promo_starts_at timestamptz,
+  add column if not exists promo_ends_at timestamptz,
+  add column if not exists seo_title text,
+  add column if not exists seo_keywords text[] not null default '{}'::text[],
+  add column if not exists main_image_alt text,
+  add column if not exists canonical_url text;
+
+alter table public.products
+  drop constraint if exists products_unit_check;
+
+alter table public.products
+  add constraint products_unit_check
+  check (
+    unit in (
+      'unidad',
+      'm²',
+      'metro lineal',
+      'docena',
+      'servicio',
+      'visita'
+    )
+  );
+
+alter table public.products
+  drop constraint if exists products_currency_check;
+
+alter table public.products
+  add constraint products_currency_check
+  check (currency in ('PYG', 'USD'));
+
+alter table public.products
+  drop constraint if exists products_min_order_quantity_check;
+
+alter table public.products
+  add constraint products_min_order_quantity_check
+  check (min_order_quantity > 0);
+
+alter table public.products
+  drop constraint if exists products_price_positive_check;
+
+alter table public.products
+  add constraint products_price_positive_check
+  check (price > 0);
+
+alter table public.products
+  drop constraint if exists products_promo_price_check;
+
+alter table public.products
+  add constraint products_promo_price_check
+  check (promo_price is null or promo_price > 0);
+
+alter table public.products
+  drop constraint if exists products_promo_dates_check;
+
+alter table public.products
+  add constraint products_promo_dates_check
+  check (
+    promo_starts_at is null
+    or promo_ends_at is null
+    or promo_ends_at >= promo_starts_at
+  );
+
+-- Compatibilidad con los productos actuales.
+update public.products
+set
+  short_description = coalesce(short_description, description),
+  full_description = coalesce(full_description, seo_description, description),
+  is_featured = coalesce(is_featured, is_recommended, false),
+  promo_price = case
+    when is_offer = true then price
+    else promo_price
+  end
+where
+  short_description is null
+  or full_description is null;
+
+-- ============================================================
+-- 2. IMÁGENES
+-- ============================================================
+
+create table if not exists public.product_images (
+  id uuid primary key default gen_random_uuid(),
+  product_id uuid not null
+    references public.products(id)
+    on delete cascade,
+  image_url text not null,
+  storage_path text,
+  alt_text text,
+  order_index integer not null default 0,
+  is_primary boolean not null default false,
+  file_size bigint,
+  mime_type text,
+  created_at timestamptz not null default now(),
+
+  constraint product_images_order_nonnegative
+    check (order_index >= 0),
+
+  constraint product_images_file_size
+    check (file_size is null or file_size <= 5242880),
+
+  constraint product_images_mime_type
+    check (
+      mime_type is null
+      or mime_type in (
+        'image/jpeg',
+        'image/png',
+        'image/webp'
+      )
+    )
+);
+
+create index if not exists product_images_product_id_idx
+  on public.product_images(product_id);
+
+create index if not exists product_images_order_idx
+  on public.product_images(product_id, order_index);
+
+create unique index if not exists product_images_storage_path_unique
+  on public.product_images(storage_path)
+  where storage_path is not null;
+
+create unique index if not exists one_primary_image_per_product_idx
+  on public.product_images(product_id)
+  where is_primary = true;
+
+-- Migrar las imágenes actuales a la nueva tabla.
+insert into public.product_images (
+  product_id,
+  image_url,
+  alt_text,
+  order_index,
+  is_primary
+)
+select
+  id,
+  image_url,
+  coalesce(main_image_alt, name),
+  0,
+  true
+from public.products
+where image_url is not null
+on conflict do nothing;
+
+-- ============================================================
+-- 3. ESCALAS DE PRECIOS
+-- ============================================================
+
+create table if not exists public.product_price_tiers (
+  id uuid primary key default gen_random_uuid(),
+  product_id uuid not null
+    references public.products(id)
+    on delete cascade,
+  min_quantity numeric(12,2) not null,
+  max_quantity numeric(12,2),
+  price_amount numeric(12,2) not null,
+  is_promo boolean not null default false,
+  label text,
+  order_index integer not null default 0,
+  created_at timestamptz not null default now(),
+
+  constraint product_price_tiers_min_positive
+    check (min_quantity > 0),
+
+  constraint product_price_tiers_price_positive
+    check (price_amount > 0),
+
+  constraint product_price_tiers_valid_range
+    check (
+      max_quantity is null
+      or max_quantity >= min_quantity
+    ),
+
+  constraint product_price_tiers_order_nonnegative
+    check (order_index >= 0)
+);
+
+create index if not exists product_price_tiers_product_id_idx
+  on public.product_price_tiers(product_id);
+
+create index if not exists product_price_tiers_order_idx
+  on public.product_price_tiers(product_id, order_index);
+
+-- Evitar rangos superpuestos.
+create or replace function public.validate_product_price_tier_overlap()
+returns trigger
+language plpgsql
+as $$
+begin
+  if exists (
+    select 1
+    from public.product_price_tiers existing
+    where existing.product_id = new.product_id
+      and existing.id <> new.id
+      and numrange(
+        existing.min_quantity,
+        coalesce(existing.max_quantity, 'Infinity'::numeric),
+        '[]'
+      ) && numrange(
+        new.min_quantity,
+        coalesce(new.max_quantity, 'Infinity'::numeric),
+        '[]'
+      )
+  ) then
+    raise exception 'Las escalas de precio se superponen.';
+  end if;
+
+  return new;
+end;
+$$;
+
+drop trigger if exists validate_price_tier_overlap
+on public.product_price_tiers;
+
+create trigger validate_price_tier_overlap
+before insert or update
+on public.product_price_tiers
+for each row
+execute function public.validate_product_price_tier_overlap();
+
+-- ============================================================
+-- 4. CARACTERÍSTICAS
+-- ============================================================
+
+create table if not exists public.product_features (
+  id uuid primary key default gen_random_uuid(),
+  product_id uuid not null
+    references public.products(id)
+    on delete cascade,
+  feature_text text not null,
+  order_index integer not null default 0,
+
+  constraint product_features_text_not_blank
+    check (length(trim(feature_text)) > 0),
+
+  constraint product_features_order_nonnegative
+    check (order_index >= 0)
+);
+
+create index if not exists product_features_product_id_idx
+  on public.product_features(product_id, order_index);
+
+-- Migrar benefits actuales.
+insert into public.product_features (
+  product_id,
+  feature_text,
+  order_index
+)
+select
+  product.id,
+  benefit.value,
+  benefit.ordinality - 1
+from public.products product
+cross join lateral jsonb_array_elements_text(product.benefits)
+  with ordinality as benefit(value, ordinality)
+where jsonb_array_length(product.benefits) > 0
+  and not exists (
+    select 1
+    from public.product_features existing
+    where existing.product_id = product.id
+  );
+
+-- ============================================================
+-- 5. ESPECIFICACIONES
+-- ============================================================
+
+create table if not exists public.product_specifications (
+  id uuid primary key default gen_random_uuid(),
+  product_id uuid not null
+    references public.products(id)
+    on delete cascade,
+  spec_key text not null,
+  spec_value text not null,
+  order_index integer not null default 0,
+
+  constraint product_specifications_key_not_blank
+    check (length(trim(spec_key)) > 0),
+
+  constraint product_specifications_value_not_blank
+    check (length(trim(spec_value)) > 0),
+
+  constraint product_specifications_order_nonnegative
+    check (order_index >= 0)
+);
+
+create index if not exists product_specifications_product_id_idx
+  on public.product_specifications(product_id, order_index);
+
+-- ============================================================
+-- 6. RECOMENDACIONES
+-- ============================================================
+
+create table if not exists public.product_recommendations (
+  id uuid primary key default gen_random_uuid(),
+  product_id uuid not null
+    references public.products(id)
+    on delete cascade,
+  recommendation_text text not null,
+  order_index integer not null default 0,
+
+  constraint product_recommendations_text_not_blank
+    check (length(trim(recommendation_text)) > 0),
+
+  constraint product_recommendations_order_nonnegative
+    check (order_index >= 0)
+);
+
+create index if not exists product_recommendations_product_id_idx
+  on public.product_recommendations(product_id, order_index);
+
+-- Migrar recommendations actuales.
+insert into public.product_recommendations (
+  product_id,
+  recommendation_text,
+  order_index
+)
+select
+  product.id,
+  recommendation.value,
+  recommendation.ordinality - 1
+from public.products product
+cross join lateral jsonb_array_elements_text(product.recommendations)
+  with ordinality as recommendation(value, ordinality)
+where jsonb_array_length(product.recommendations) > 0
+  and not exists (
+    select 1
+    from public.product_recommendations existing
+    where existing.product_id = product.id
+  );
+
+-- ============================================================
+-- 7. ROW LEVEL SECURITY
+-- ============================================================
+
+alter table public.product_images enable row level security;
+alter table public.product_price_tiers enable row level security;
+alter table public.product_features enable row level security;
+alter table public.product_specifications enable row level security;
+alter table public.product_recommendations enable row level security;
+
+-- Lectura pública: solo relaciones de productos activos.
+drop policy if exists "Public can read product images"
+on public.product_images;
+
+create policy "Public can read product images"
+on public.product_images
+for select
+to anon, authenticated
+using (
+  exists (
+    select 1
+    from public.products
+    where products.id = product_images.product_id
+      and products.is_active = true
+  )
+);
+
+drop policy if exists "Public can read product price tiers"
+on public.product_price_tiers;
+
+create policy "Public can read product price tiers"
+on public.product_price_tiers
+for select
+to anon, authenticated
+using (
+  exists (
+    select 1
+    from public.products
+    where products.id = product_price_tiers.product_id
+      and products.is_active = true
+  )
+);
+
+drop policy if exists "Public can read product features"
+on public.product_features;
+
+create policy "Public can read product features"
+on public.product_features
+for select
+to anon, authenticated
+using (
+  exists (
+    select 1
+    from public.products
+    where products.id = product_features.product_id
+      and products.is_active = true
+  )
+);
+
+drop policy if exists "Public can read product specifications"
+on public.product_specifications;
+
+create policy "Public can read product specifications"
+on public.product_specifications
+for select
+to anon, authenticated
+using (
+  exists (
+    select 1
+    from public.products
+    where products.id = product_specifications.product_id
+      and products.is_active = true
+  )
+);
+
+drop policy if exists "Public can read product recommendations"
+on public.product_recommendations;
+
+create policy "Public can read product recommendations"
+on public.product_recommendations
+for select
+to anon, authenticated
+using (
+  exists (
+    select 1
+    from public.products
+    where products.id = product_recommendations.product_id
+      and products.is_active = true
+  )
+);
+
+-- Quitar escritura general de staff sobre productos.
+drop policy if exists "Staff can manage products"
+on public.products;
+
+-- Solo administradores pueden escribir productos.
+drop policy if exists "Admins can insert products"
+on public.products;
+
+create policy "Admins can insert products"
+on public.products
+for insert
+to authenticated
+with check (public.is_admin());
+
+drop policy if exists "Admins can update products"
+on public.products;
+
+create policy "Admins can update products"
+on public.products
+for update
+to authenticated
+using (public.is_admin())
+with check (public.is_admin());
+
+drop policy if exists "Admins can delete products"
+on public.products;
+
+create policy "Admins can delete products"
+on public.products
+for delete
+to authenticated
+using (public.is_admin());
+
+-- Relaciones: escritura exclusiva de administradores.
+drop policy if exists "Admins can manage product images"
+on public.product_images;
+
+create policy "Admins can manage product images"
+on public.product_images
+for all
+to authenticated
+using (public.is_admin())
+with check (public.is_admin());
+
+drop policy if exists "Admins can manage product price tiers"
+on public.product_price_tiers;
+
+create policy "Admins can manage product price tiers"
+on public.product_price_tiers
+for all
+to authenticated
+using (public.is_admin())
+with check (public.is_admin());
+
+drop policy if exists "Admins can manage product features"
+on public.product_features;
+
+create policy "Admins can manage product features"
+on public.product_features
+for all
+to authenticated
+using (public.is_admin())
+with check (public.is_admin());
+
+drop policy if exists "Admins can manage product specifications"
+on public.product_specifications;
+
+create policy "Admins can manage product specifications"
+on public.product_specifications
+for all
+to authenticated
+using (public.is_admin())
+with check (public.is_admin());
+
+drop policy if exists "Admins can manage product recommendations"
+on public.product_recommendations;
+
+create policy "Admins can manage product recommendations"
+on public.product_recommendations
+for all
+to authenticated
+using (public.is_admin())
+with check (public.is_admin());
+
+-- Permisos SQL para Data API.
+grant select
+on public.product_images,
+   public.product_price_tiers,
+   public.product_features,
+   public.product_specifications,
+   public.product_recommendations
+to anon, authenticated;
+
+grant insert, update, delete
+on public.product_images,
+   public.product_price_tiers,
+   public.product_features,
+   public.product_specifications,
+   public.product_recommendations
+to authenticated;
+
+grant select, insert, update, delete
+on public.product_images,
+   public.product_price_tiers,
+   public.product_features,
+   public.product_specifications,
+   public.product_recommendations
+to service_role;
+
+-- ============================================================
+-- 8. STORAGE
+-- ============================================================
+
+insert into storage.buckets (
+  id,
+  name,
+  public,
+  file_size_limit,
+  allowed_mime_types
+)
+values (
+  'product-images',
+  'product-images',
+  true,
+  5242880,
+  array[
+    'image/jpeg',
+    'image/png',
+    'image/webp'
+  ]
+)
+on conflict (id) do update
+set
+  public = excluded.public,
+  file_size_limit = excluded.file_size_limit,
+  allowed_mime_types = excluded.allowed_mime_types;
+
+drop policy if exists "Public can view product images"
+on storage.objects;
+
+create policy "Public can view product images"
+on storage.objects
+for select
+to public
+using (bucket_id = 'product-images');
+
+drop policy if exists "Admins can upload product images"
+on storage.objects;
+
+create policy "Admins can upload product images"
+on storage.objects
+for insert
+to authenticated
+with check (
+  bucket_id = 'product-images'
+  and public.is_admin()
+);
+
+drop policy if exists "Admins can update product images"
+on storage.objects;
+
+create policy "Admins can update product images"
+on storage.objects
+for update
+to authenticated
+using (
+  bucket_id = 'product-images'
+  and public.is_admin()
+)
+with check (
+  bucket_id = 'product-images'
+  and public.is_admin()
+);
+
+drop policy if exists "Admins can delete product images"
+on storage.objects;
+
+create policy "Admins can delete product images"
+on storage.objects
+for delete
+to authenticated
+using (
+  bucket_id = 'product-images'
+  and public.is_admin()
+);
+
+commit;
+
+===== ACCIONES PRODUCTOS =====
+'use server';
+
+import { revalidatePath } from 'next/cache';
+
+import {
+  productFormSchema,
+  type ProductFormValues
+} from '@/lib/products/schema';
+import { createProductSlug } from '@/lib/products/slug';
+import { createClient } from '@/lib/supabase/server';
+
+type ProductActionResult = {
+  success: boolean;
+  productId?: string;
+  message?: string;
+  fieldErrors?: Record<string, string[] | undefined>;
+};
+
+type SupabaseClient = Awaited<ReturnType<typeof createClient>>;
+
+async function requireAdministrator() {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+    error: userError
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    throw new Error('Tu sesión venció. Volvé a iniciar sesión.');
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from('profiles')
+    .select('role, is_active')
+    .eq('id', user.id)
+    .single();
+
+  if (
+    profileError ||
+    !profile ||
+    !profile.is_active ||
+    profile.role !== 'admin'
+  ) {
+    throw new Error(
+      'No tenés permisos para administrar productos.'
+    );
+  }
+
+  return {
+    supabase,
+    user
+  };
+}
+
+function normalizeKeywords(value: string) {
+  return value
+    .split(',')
+    .map((keyword) => keyword.trim())
+    .filter(Boolean);
+}
+
+function normalizeImages(values: ProductFormValues) {
+  const images = values.images.map((image, index) => ({
+    ...image,
+    altText:
+      image.altText ||
+      values.mainImageAlt ||
+      values.name,
+    orderIndex: index
+  }));
+
+  const hasPrimary = images.some((image) => image.isPrimary);
+
+  return images.map((image, index) => ({
+    ...image,
+    isPrimary:
+      image.isPrimary ||
+      (!hasPrimary && index === 0)
+  }));
+}
+
+function buildProductPayload(values: ProductFormValues) {
+  const images = normalizeImages(values);
+
+  const primaryImage =
+    images.find((image) => image.isPrimary) ??
+    images[0] ??
+    null;
+
+  return {
+    name: values.name,
+    slug: values.slug,
+    category_id: values.categoryId,
+
+    description: values.shortDescription,
+    short_description: values.shortDescription,
+    full_description: values.description,
+
+    price: values.priceAmount,
+    currency: values.currency,
+    unit: values.unit,
+    min_order_quantity: values.minOrderQuantity,
+
+    promo_price: values.promoPrice ?? null,
+    promo_starts_at: values.promoStartsAt || null,
+    promo_ends_at: values.promoEndsAt || null,
+
+    image_url: primaryImage?.imageUrl ?? null,
+
+    benefits: values.features.map((item) => item.value),
+    recommendations: values.recommendations.map(
+      (item) => item.value
+    ),
+
+    is_offer: Boolean(values.promoPrice),
+    is_featured: values.isFeatured,
+    is_recommended: values.isFeatured,
+    is_active: values.isActive,
+    in_stock: true,
+
+    seo_title: values.seoTitle || null,
+    seo_description: values.seoDescription || null,
+    seo_keywords: normalizeKeywords(values.seoKeywords),
+    main_image_alt:
+      values.mainImageAlt ||
+      primaryImage?.altText ||
+      values.name,
+    canonical_url: values.canonicalUrl || null
+  };
+}
+
+async function insertProductRelations(
+  supabase: SupabaseClient,
+  productId: string,
+  values: ProductFormValues
+) {
+  const images = normalizeImages(values);
+
+  const priceTiers = [...values.priceTiers].sort(
+    (first, second) =>
+      first.minQuantity - second.minQuantity
+  );
+
+  if (images.length) {
+    const { error } = await supabase
+      .from('product_images')
+      .insert(
+        images.map((image, index) => ({
+          product_id: productId,
+          image_url: image.imageUrl,
+          storage_path: image.storagePath || null,
+          alt_text:
+            image.altText ||
+            values.mainImageAlt ||
+            values.name,
+          order_index: index,
+          is_primary: image.isPrimary,
+          file_size: image.fileSize,
+          mime_type: image.mimeType
+        }))
+      );
+
+    if (error) {
+      throw new Error(
+        `No se pudieron guardar las imágenes: ${error.message}`
+      );
+    }
+  }
+
+  if (priceTiers.length) {
+    const { error } = await supabase
+      .from('product_price_tiers')
+      .insert(
+        priceTiers.map((tier, index) => ({
+          product_id: productId,
+          min_quantity: tier.minQuantity,
+          max_quantity: tier.maxQuantity ?? null,
+          price_amount: tier.priceAmount,
+          is_promo: tier.isPromo,
+          label: tier.label || null,
+          order_index: index
+        }))
+      );
+
+    if (error) {
+      throw new Error(
+        `No se pudieron guardar las escalas: ${error.message}`
+      );
+    }
+  }
+
+  const features = values.features.filter(
+    (feature) => feature.value.trim().length > 0
+  );
+
+  if (features.length) {
+    const { error } = await supabase
+      .from('product_features')
+      .insert(
+        features.map((feature, index) => ({
+          product_id: productId,
+          feature_text: feature.value.trim(),
+          order_index: index
+        }))
+      );
+
+    if (error) {
+      throw new Error(
+        `No se pudieron guardar las características: ${error.message}`
+      );
+    }
+  }
+
+  const specifications = values.specifications.filter(
+    (specification) =>
+      specification.key.trim().length > 0 &&
+      specification.value.trim().length > 0
+  );
+
+  if (specifications.length) {
+    const { error } = await supabase
+      .from('product_specifications')
+      .insert(
+        specifications.map((specification, index) => ({
+          product_id: productId,
+          spec_key: specification.key.trim(),
+          spec_value: specification.value.trim(),
+          order_index: index
+        }))
+      );
+
+    if (error) {
+      throw new Error(
+        `No se pudieron guardar las especificaciones: ${error.message}`
+      );
+    }
+  }
+
+  const recommendations = values.recommendations.filter(
+    (recommendation) =>
+      recommendation.value.trim().length > 0
+  );
+
+  if (recommendations.length) {
+    const { error } = await supabase
+      .from('product_recommendations')
+      .insert(
+        recommendations.map((recommendation, index) => ({
+          product_id: productId,
+          recommendation_text:
+            recommendation.value.trim(),
+          order_index: index
+        }))
+      );
+
+    if (error) {
+      throw new Error(
+        `No se pudieron guardar las recomendaciones: ${error.message}`
+      );
+    }
+  }
+}
+
+async function deleteProductRelations(
+  supabase: SupabaseClient,
+  productId: string
+) {
+  const relationTables = [
+    'product_images',
+    'product_price_tiers',
+    'product_features',
+    'product_specifications',
+    'product_recommendations'
+  ] as const;
+
+  for (const table of relationTables) {
+    const { error } = await supabase
+      .from(table)
+      .delete()
+      .eq('product_id', productId);
+
+    if (error) {
+      throw new Error(
+        `No se pudieron sincronizar los datos relacionados: ${error.message}`
+      );
+    }
+  }
+}
+
+async function cleanupStoragePaths(
+  supabase: SupabaseClient,
+  paths: string[]
+) {
+  const validPaths = Array.from(
+    new Set(paths.filter(Boolean))
+  );
+
+  if (!validPaths.length) {
+    return;
+  }
+
+  const { error } = await supabase.storage
+    .from('product-images')
+    .remove(validPaths);
+
+  if (error) {
+    console.error(
+      'No se pudieron eliminar algunos archivos de Storage:',
+      error.message
+    );
+  }
+}
+
+function revalidateProductPaths() {
+  revalidatePath('/admin');
+  revalidatePath('/admin/productos');
+  revalidatePath('/shop');
+  revalidatePath('/');
+}
+
+export async function createProductAction(
+  input: ProductFormValues
+): Promise<ProductActionResult> {
+  const parsed = productFormSchema.safeParse(input);
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      message: 'Revisá los campos marcados.',
+      fieldErrors: parsed.error.flatten().fieldErrors
+    };
+  }
+
+  try {
+    const { supabase, user } =
+      await requireAdministrator();
+
+    const values = parsed.data;
+
+    const { data: existingProduct } = await supabase
+      .from('products')
+      .select('id')
+      .eq('slug', values.slug)
+      .maybeSingle();
+
+    if (existingProduct) {
+      return {
+        success: false,
+        message: 'Ya existe un producto con ese slug.',
+        fieldErrors: {
+          slug: ['Ya existe un producto con ese slug.']
+        }
+      };
+    }
+
+    const { data: product, error: productError } =
+      await supabase
+        .from('products')
+        .insert(buildProductPayload(values))
+        .select('id')
+        .single();
+
+    if (productError || !product) {
+      throw new Error(
+        productError?.message ||
+          'No se pudo crear el producto.'
+      );
+    }
+
+    try {
+      await insertProductRelations(
+        supabase,
+        product.id,
+        values
+      );
+    } catch (relationError) {
+      await supabase
+        .from('products')
+        .delete()
+        .eq('id', product.id);
+
+      await cleanupStoragePaths(
+        supabase,
+        values.images.map((image) => image.storagePath)
+      );
+
+      throw relationError;
+    }
+
+    await supabase.from('activity_logs').insert({
+      user_id: user.id,
+      action: 'product.created',
+      entity_type: 'product',
+      entity_id: product.id,
+      metadata: {
+        name: values.name,
+        slug: values.slug
+      }
+    });
+
+    revalidateProductPaths();
+
+    return {
+      success: true,
+      productId: product.id,
+      message: 'Producto creado correctamente.'
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message:
+        error instanceof Error
+          ? error.message
+          : 'No se pudo guardar el producto.'
+    };
+  }
+}
+
+export async function updateProductAction(
+  productId: string,
+  input: ProductFormValues
+): Promise<ProductActionResult> {
+  const parsed = productFormSchema.safeParse(input);
+
+  if (!parsed.success) {
+    return {
+      success: false,
+      message: 'Revisá los campos marcados.',
+      fieldErrors: parsed.error.flatten().fieldErrors
+    };
+  }
+
+  try {
+    const { supabase, user } =
+      await requireAdministrator();
+
+    const values = parsed.data;
+
+    const { data: product, error: productReadError } =
+      await supabase
+        .from('products')
+        .select('id, name, slug')
+        .eq('id', productId)
+        .single();
+
+    if (productReadError || !product) {
+      throw new Error('El producto no existe.');
+    }
+
+    const { data: duplicatedSlug } = await supabase
+      .from('products')
+      .select('id')
+      .eq('slug', values.slug)
+      .neq('id', productId)
+      .maybeSingle();
+
+    if (duplicatedSlug) {
+      return {
+        success: false,
+        message: 'Ya existe otro producto con ese slug.',
+        fieldErrors: {
+          slug: ['Ya existe otro producto con ese slug.']
+        }
+      };
+    }
+
+    const { data: currentImages } = await supabase
+      .from('product_images')
+      .select('storage_path')
+      .eq('product_id', productId);
+
+    const { error: updateError } = await supabase
+      .from('products')
+      .update(buildProductPayload(values))
+      .eq('id', productId);
+
+    if (updateError) {
+      throw new Error(
+        `No se pudo actualizar el producto: ${updateError.message}`
+      );
+    }
+
+    await deleteProductRelations(supabase, productId);
+    await insertProductRelations(
+      supabase,
+      productId,
+      values
+    );
+
+    const retainedPaths = new Set(
+      values.images
+        .map((image) => image.storagePath)
+        .filter(Boolean)
+    );
+
+    const removedPaths =
+      currentImages
+        ?.map((image) => image.storage_path)
+        .filter(
+          (path): path is string =>
+            Boolean(path) && !retainedPaths.has(path)
+        ) ?? [];
+
+    await cleanupStoragePaths(supabase, removedPaths);
+
+    await supabase.from('activity_logs').insert({
+      user_id: user.id,
+      action: 'product.updated',
+      entity_type: 'product',
+      entity_id: productId,
+      metadata: {
+        previous_name: product.name,
+        name: values.name,
+        previous_slug: product.slug,
+        slug: values.slug
+      }
+    });
+
+    revalidateProductPaths();
+    revalidatePath(`/product/${values.slug}`);
+    revalidatePath(
+      `/admin/productos/${productId}/editar`
+    );
+
+    return {
+      success: true,
+      productId,
+      message: 'Producto actualizado correctamente.'
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message:
+        error instanceof Error
+          ? error.message
+          : 'No se pudo actualizar el producto.'
+    };
+  }
+}
+
+export async function deleteProductAction(
+  productId: string
+): Promise<ProductActionResult> {
+  try {
+    const { supabase, user } =
+      await requireAdministrator();
+
+    const { data: product, error: productError } =
+      await supabase
+        .from('products')
+        .select('id, name, slug')
+        .eq('id', productId)
+        .single();
+
+    if (productError || !product) {
+      throw new Error('El producto no existe.');
+    }
+
+    const { data: images } = await supabase
+      .from('product_images')
+      .select('storage_path')
+      .eq('product_id', productId);
+
+    const { error: deleteError } = await supabase
+      .from('products')
+      .delete()
+      .eq('id', productId);
+
+    if (deleteError) {
+      throw new Error(
+        `No se pudo eliminar el producto: ${deleteError.message}`
+      );
+    }
+
+    await cleanupStoragePaths(
+      supabase,
+      images
+        ?.map((image) => image.storage_path)
+        .filter((path): path is string => Boolean(path)) ??
+        []
+    );
+
+    await supabase.from('activity_logs').insert({
+      user_id: user.id,
+      action: 'product.deleted',
+      entity_type: 'product',
+      entity_id: productId,
+      metadata: {
+        name: product.name,
+        slug: product.slug
+      }
+    });
+
+    revalidateProductPaths();
+
+    return {
+      success: true,
+      message: 'Producto eliminado correctamente.'
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message:
+        error instanceof Error
+          ? error.message
+          : 'No se pudo eliminar el producto.'
+    };
+  }
+}
+
+async function createUniqueSlug(
+  supabase: SupabaseClient,
+  originalName: string
+) {
+  const baseSlug =
+    createProductSlug(`${originalName}-copia`) ||
+    `producto-copia-${Date.now()}`;
+
+  let candidate = baseSlug;
+  let suffix = 2;
+
+  while (true) {
+    const { data } = await supabase
+      .from('products')
+      .select('id')
+      .eq('slug', candidate)
+      .maybeSingle();
+
+    if (!data) {
+      return candidate;
+    }
+
+    candidate = `${baseSlug}-${suffix}`;
+    suffix += 1;
+  }
+}
+
+export async function duplicateProductAction(
+  productId: string
+): Promise<ProductActionResult> {
+  try {
+    const { supabase, user } =
+      await requireAdministrator();
+
+    const [
+      productResult,
+      imagesResult,
+      tiersResult,
+      featuresResult,
+      specificationsResult,
+      recommendationsResult
+    ] = await Promise.all([
+      supabase
+        .from('products')
+        .select('*')
+        .eq('id', productId)
+        .single(),
+
+      supabase
+        .from('product_images')
+        .select('*')
+        .eq('product_id', productId)
+        .order('order_index'),
+
+      supabase
+        .from('product_price_tiers')
+        .select('*')
+        .eq('product_id', productId)
+        .order('order_index'),
+
+      supabase
+        .from('product_features')
+        .select('*')
+        .eq('product_id', productId)
+        .order('order_index'),
+
+      supabase
+        .from('product_specifications')
+        .select('*')
+        .eq('product_id', productId)
+        .order('order_index'),
+
+      supabase
+        .from('product_recommendations')
+        .select('*')
+        .eq('product_id', productId)
+        .order('order_index')
+    ]);
+
+    if (productResult.error || !productResult.data) {
+      throw new Error('El producto no existe.');
+    }
+
+    const original = productResult.data;
+    const newSlug = await createUniqueSlug(
+      supabase,
+      original.name
+    );
+
+    const productFields = { ...original };
+
+    delete productFields.id;
+    delete productFields.created_at;
+    delete productFields.updated_at;
+
+    const { data: duplicatedProduct, error } =
+      await supabase
+        .from('products')
+        .insert({
+          ...productFields,
+          name: `${original.name} (copia)`,
+          slug: newSlug,
+          is_active: false,
+          image_url: null
+        })
+        .select('id')
+        .single();
+
+    if (error || !duplicatedProduct) {
+      throw new Error(
+        error?.message ||
+          'No se pudo duplicar el producto.'
+      );
+    }
+
+    const newProductId = duplicatedProduct.id;
+
+    if (imagesResult.data?.length) {
+      const duplicatedImages = [];
+
+      for (const image of imagesResult.data) {
+        if (!image.storage_path) {
+          duplicatedImages.push({
+            product_id: newProductId,
+            image_url: image.image_url,
+            storage_path: null,
+            alt_text: image.alt_text,
+            order_index: image.order_index,
+            is_primary: image.is_primary,
+            file_size: image.file_size,
+            mime_type: image.mime_type
+          });
+
+          continue;
+        }
+
+        const extension =
+          image.storage_path.split('.').pop() || 'webp';
+
+        const newStoragePath =
+          `products/${newSlug}/${crypto.randomUUID()}.${extension}`;
+
+        const { error: copyError } =
+          await supabase.storage
+            .from('product-images')
+            .copy(image.storage_path, newStoragePath);
+
+        if (copyError) {
+          throw new Error(
+            `No se pudo duplicar una imagen: ${copyError.message}`
+          );
+        }
+
+        const { data: publicUrlData } =
+          supabase.storage
+            .from('product-images')
+            .getPublicUrl(newStoragePath);
+
+        duplicatedImages.push({
+          product_id: newProductId,
+          image_url: publicUrlData.publicUrl,
+          storage_path: newStoragePath,
+          alt_text: image.alt_text,
+          order_index: image.order_index,
+          is_primary: image.is_primary,
+          file_size: image.file_size,
+          mime_type: image.mime_type
+        });
+      }
+
+      const { error: imageInsertError } = await supabase
+        .from('product_images')
+        .insert(duplicatedImages);
+
+      if (imageInsertError) {
+        throw new Error(imageInsertError.message);
+      }
+
+      const primaryImage = duplicatedImages.find(
+        (image) => image.is_primary
+      );
+
+      if (primaryImage) {
+        await supabase
+          .from('products')
+          .update({
+            image_url: primaryImage.image_url
+          })
+          .eq('id', newProductId);
+      }
+    }
+
+    if (tiersResult.data?.length) {
+      await supabase
+        .from('product_price_tiers')
+        .insert(
+          tiersResult.data.map((tier) => ({
+            min_quantity: tier.min_quantity,
+            max_quantity: tier.max_quantity,
+            price_amount: tier.price_amount,
+            is_promo: tier.is_promo,
+            label: tier.label,
+            order_index: tier.order_index,
+            product_id: newProductId
+          }))
+        );
+    }
+
+    if (featuresResult.data?.length) {
+      await supabase
+        .from('product_features')
+        .insert(
+          featuresResult.data.map((feature) => ({
+            feature_text: feature.feature_text,
+            order_index: feature.order_index,
+            product_id: newProductId
+          }))
+        );
+    }
+
+    if (specificationsResult.data?.length) {
+      await supabase
+        .from('product_specifications')
+        .insert(
+          specificationsResult.data.map((specification) => ({
+            spec_key: specification.spec_key,
+            spec_value: specification.spec_value,
+            order_index: specification.order_index,
+            product_id: newProductId
+          }))
+        );
+    }
+
+    if (recommendationsResult.data?.length) {
+      await supabase
+        .from('product_recommendations')
+        .insert(
+          recommendationsResult.data.map((recommendation) => ({
+            recommendation_text:
+              recommendation.recommendation_text,
+            order_index: recommendation.order_index,
+            product_id: newProductId
+          }))
+        );
+    }
+
+    await supabase.from('activity_logs').insert({
+      user_id: user.id,
+      action: 'product.duplicated',
+      entity_type: 'product',
+      entity_id: newProductId,
+      metadata: {
+        source_product_id: productId,
+        source_name: original.name,
+        duplicated_name: `${original.name} (copia)`,
+        duplicated_slug: newSlug
+      }
+    });
+
+    revalidateProductPaths();
+
+    return {
+      success: true,
+      productId: newProductId,
+      message:
+        'Producto duplicado como borrador correctamente.'
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message:
+        error instanceof Error
+          ? error.message
+          : 'No se pudo duplicar el producto.'
+    };
+  }
+}

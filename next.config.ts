@@ -1,6 +1,24 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: [
+    'upgraded-adventure-v6w77g99469phxwq9-3000.app.github.dev',
+    '*.app.github.dev'
+  ],
+
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        'localhost',
+        'localhost:3000',
+        '127.0.0.1',
+        '127.0.0.1:3000',
+        'upgraded-adventure-v6w77g99469phxwq9-3000.app.github.dev',
+        '*.app.github.dev',
+        '*.github.dev'
+      ]
+    }
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [360, 390, 430, 640, 750, 828, 1080, 1200, 1440],
