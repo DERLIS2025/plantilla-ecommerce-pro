@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { Manrope } from "next/font/google";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
 import { siteConfig } from '@/lib/site-config';
+
+import { RouteShell } from '@/components/route-shell';
 
 import './globals.css';
 import '../styles/design-tokens.css';
@@ -82,10 +82,8 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} bg-[#f8faf8] font-sans text-[#172019] antialiased`}
       >
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <SpeedInsights />
+<main><RouteShell>{children}</RouteShell></main>
+<SpeedInsights />
       </body>
     </html>
   );
