@@ -1,15 +1,21 @@
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
-export default function AdminLayout({
+export const metadata: Metadata = {
+  title: {
+    default: 'Administración',
+    template: '%s | Portal Verde Admin'
+  },
+  robots: {
+    index: false,
+    follow: false
+  }
+};
+
+export default function AdminRootLayout({
   children
 }: {
   children: ReactNode;
 }) {
-  return (
-    <main className="min-h-screen bg-[#f4f7f4]">
-      <div className="container-shell py-8">
-        {children}
-      </div>
-    </main>
-  );
+  return children;
 }
