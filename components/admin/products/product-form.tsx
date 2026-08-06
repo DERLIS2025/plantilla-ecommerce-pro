@@ -140,6 +140,17 @@ export function ProductForm({
     name: 'recommendations'
   });
 
+  function invalidSubmit() {
+    setServerMessage(
+      'Hay campos incompletos o con datos inválidos. Revisá los campos marcados en rojo.'
+    );
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
   function submit(values: ProductFormValues) {
     setServerMessage('');
 
@@ -153,6 +164,12 @@ export function ProductForm({
         setServerMessage(
           result.message || 'No se pudo guardar el producto.'
         );
+
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+
         return;
       }
 
@@ -163,7 +180,8 @@ export function ProductForm({
 
   return (
     <form
-      onSubmit={handleSubmit(submit)}
+      onSubmit={handleSubmit(submit, invalidSubmit)}
+      noValidate
       className="mx-auto w-full max-w-[1100px]"
     >
       <div className="mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
