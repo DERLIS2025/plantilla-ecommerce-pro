@@ -5,12 +5,13 @@ import {
   Pencil,
   Plus,
   Search,
-  Tag,
-  Trash2
+  Tag
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { ProductDeleteButton } from '@/components/admin/products/product-delete-button';
+import { ProductDuplicateButton } from '@/components/admin/products/product-duplicate-button';
 import { createClient } from '@/lib/supabase/server';
 
 export default async function AdminProductsPage() {
@@ -105,9 +106,14 @@ export default async function AdminProductsPage() {
 
               <tbody className="divide-y divide-slate-100">
                 {productList.map((product) => {
-                  const category = Array.isArray(product.categories)
-                    ? product.categories[0]?.name
-                    : product.categories?.name;
+                  const categoryRelation = product.categories as
+                    | { name: string }
+                    | { name: string }[]
+                    | null;
+
+                  const category = Array.isArray(categoryRelation)
+                    ? categoryRelation[0]?.name
+                    : categoryRelation?.name;
 
                   return (
                     <tr
@@ -217,13 +223,15 @@ export default async function AdminProductsPage() {
                             <Pencil className="h-4 w-4" />
                           </Link>
 
-                          <button
-                            type="button"
-                            aria-label={`Eliminar ${product.name}`}
-                            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition hover:border-red-200 hover:bg-red-50 hover:text-red-600"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </button>
+                          <ProductDuplicateButton
+                            productId={product.id}
+                            productName={product.name}
+                          />
+
+                          <ProductDeleteButton
+                            productId={product.id}
+                            productName={product.name}
+                          />
                         </div>
                       </td>
                     </tr>
