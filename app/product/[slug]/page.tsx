@@ -16,6 +16,7 @@ import {
 
 import { ProductCard } from '@/components/product-card';
 import { formatPricePYG, products } from '@/lib/data';
+import { getPublicProductBySlug } from '@/lib/products/public-products';
 import { WhatsAppIcon } from '@/components/icons';
 
 type ProductPageProps = {
@@ -26,7 +27,36 @@ export async function generateMetadata({
   params
 }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = products.find((item) => item.slug === slug);
+  const databaseProduct = await getPublicProductBySlug(slug);
+
+  const product = databaseProduct
+    ? {
+        ...databaseProduct,
+        category:
+          databaseProduct.categories?.name ?? 'Productos',
+        image: databaseProduct.mainImage,
+        price: Number(databaseProduct.price ?? 0),
+        previousPrice:
+          databaseProduct.promo_price &&
+          Number(databaseProduct.promo_price) <
+            Number(databaseProduct.price)
+            ? Number(databaseProduct.price)
+            : undefined,
+        isOffer: Boolean(databaseProduct.promo_price),
+        description:
+          databaseProduct.full_description ??
+          databaseProduct.description ??
+          '',
+        seoDescription:
+          databaseProduct.seo_description ??
+          databaseProduct.description ??
+          '',
+        benefits: databaseProduct.features,
+        recommendations:
+          databaseProduct.recommendations,
+        relatedProducts: []
+      }
+    : products.find((item) => item.slug === slug);
 
   if (!product) {
     return {
