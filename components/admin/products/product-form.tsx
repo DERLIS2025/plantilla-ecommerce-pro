@@ -140,9 +140,16 @@ export function ProductForm({
     name: 'recommendations'
   });
 
-  function invalidSubmit() {
+  function invalidSubmit(formErrors: typeof errors) {
+    console.error('Errores del formulario de producto:', formErrors);
+
+    const firstError = Object.values(formErrors)
+      .map((error) => error?.message)
+      .find((message): message is string => Boolean(message));
+
     setServerMessage(
-      'Hay campos incompletos o con datos inválidos. Revisá los campos marcados en rojo.'
+      firstError ||
+        'Hay campos incompletos o con datos inválidos. Revisá los campos marcados en rojo.'
     );
 
     window.scrollTo({
